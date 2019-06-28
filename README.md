@@ -35,5 +35,5 @@ pytest
 
 ## The Unlicense
 
-This work in [public domain](LICENSE).
+This work is in [public domain](LICENSE).
 
