@@ -1,6 +1,6 @@
 # Image compression with singular value expansion in Python
 
-This a Python program I wrote for fun to practice linear algebra. It uses singular value expansion to reduce the size of an image.
+This a Python program I wrote for fun to practice linear algebra. It uses singular value expansion method to reduce the size of an image.
 
 ## Setup
 
@@ -27,9 +27,13 @@ Run [make_grayscale.py](make_grayscale.py) to create a grayscale image.
 
 ## Testing
 
-Install the `pytest` Python package and run the tests:
+Install the `pytest` Python package and run the unit tests:
 
 ```
 pytest
 ```
+
+## License
+
+This work in [public domain](LICENSE).
 
