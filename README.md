@@ -33,7 +33,7 @@ Install the `pytest` Python package and run the unit tests:
 pytest
 ```
 
-## License
+## The Unlicense
 
 This work in [public domain](LICENSE).
 
