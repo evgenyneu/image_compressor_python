@@ -1,0 +1,9 @@
+tmp
+data/observe
+__pycache__
+pyraf
+.cache
+logbook.sublime-workspace
+login.cl
+code/python/test_data/30Oct18
+logfile
