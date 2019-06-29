@@ -1,5 +1,0 @@
-[
-  "compressor_test.py::test_matrix_multiply",
-  "compressor_test.py::test_matrix_multiply_incompatible_dimensions",
-  "compressor_test.py::test_load_image"
-]
