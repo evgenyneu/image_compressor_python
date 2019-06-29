@@ -31,7 +31,7 @@ def matrix_size(matrix):
                 current_columns = len(matrix[irow])
 
                 if current_columns != columns:
-                    raise ValueError(f"Matrix rows have different number of elements.") 
+                    raise ValueError(f"Matrix rows have unequal number of elements.") 
     
         except TypeError:
             # Must be a row vector
