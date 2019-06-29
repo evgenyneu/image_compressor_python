@@ -11,7 +11,7 @@ def norm(vector):
     Returns
     -------
     float
-        Returns the norm of a vector.
+        Returns vector's length.
     """
     if len(vector) == 0:
         raise ValueError(f"Vector is empty.")
