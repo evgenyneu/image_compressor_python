@@ -11,12 +11,6 @@ pip install numpy
 pip install imageio
 ```
 
-
-## Creating a grayscale image
-
-Run [make_grayscale.py](make_grayscale.py) to create a grayscale image.
-
-
 ## Run unit tests
 
 Install `pytest`
