@@ -35,8 +35,6 @@ def norm(vector):
 
     return math.sqrt(sum)
 
-    
-
 
 def matrix_multiply(a, b):
     """
