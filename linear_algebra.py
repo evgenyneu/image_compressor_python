@@ -1,5 +1,5 @@
 """
-Functions that perform linear algebra operations, like matrix multiplication.
+Linear algebra functions (matrix multiplication etc.)
 """
 
 import math
