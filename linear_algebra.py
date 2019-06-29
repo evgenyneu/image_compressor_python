@@ -89,32 +89,26 @@ def matrix_multiply(a, b):
         The product of the two matrices.
     """
 
-    if len(a) == 0 or len(b) == 0 or len(b[0]) == 0:
-        raise ValueError(f"Supplied matrix is empty.")
-
-    if len(a[0]) != len(b):
-        raise ValueError(f"Incompatible dimensions.")
-
     # We use the following letters for matrix dimensions:
     #   a is m by n,
     #   b is n by p.
 
-    m = len(a)
-    n = len(a[0])
-    p = len(b[0])
+    m, n = matrix_size(a)
+    b_n, p = matrix_size(b)
+
+    if m == 0 or n == 0 or p == 0:
+        raise ValueError(f"Supplied matrix is empty.")
+
+    if n != b_n:
+        raise ValueError(f"Incompatible dimensions.")
+
     product = [[0] * p for i in range(m)]
 
     for i in range(m):
         for j in range(p):
             element = 0
 
-            if len(a[i]) != n:
-                raise ValueError(f"Unequal number of elements in rows of a.")
-
             for k in range(0, n):
-                if len(b[k]) != p:
-                    raise ValueError(f"Unequal number of elements in columns of b.")
-
                 element += a[i][k] * b[k][j]
 
             product[i][j] = element
