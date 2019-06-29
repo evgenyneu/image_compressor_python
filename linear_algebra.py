@@ -1,4 +1,5 @@
 import math
+import copy
 
 def norm(vector):
     """
@@ -33,7 +34,6 @@ def norm(vector):
         sum += value**2
 
     return math.sqrt(sum)
-
 
 def matrix_multiply(a, b):
     """
@@ -81,3 +81,42 @@ def matrix_multiply(a, b):
             product[i][j] = element
 
     return product
+
+def matrix_scalar_multiply(matrix, scalar):
+    """
+    Multiplies a matrix with a scalar.
+
+    Parameters
+    ----------
+    matrix : list of float
+        Matrix to be multiplied by the scalar.
+
+    scalar : flat
+        A scalar.
+
+    Returns
+    -------
+    list of numbers
+        Matrix, the result of the matrix-scalar multiplication.
+    """
+
+    # Copy the matrix, we don't want to modify the input matrix
+    result = copy.deepcopy(matrix)
+    
+    if len(result) == 0:
+        raise ValueError(f"Matrix is empty.")
+
+    for i in range(len(result)):
+        vector_or_number = result[i]
+
+        try:
+            # Test if this is a column vector by getting its length
+            row_length = len(vector_or_number)
+
+            for j in range(row_length):
+                vector_or_number[j] *= scalar
+        except TypeError:
+            # Must be a value of a row vector
+            result[i] *= scalar
+
+    return result
