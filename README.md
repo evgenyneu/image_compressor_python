@@ -17,7 +17,7 @@ pip install imageio
 Run [make_grayscale.py](make_grayscale.py) to create a grayscale image.
 
 
-## Testing
+## Run unit tests
 
 Install `pytest`
 
