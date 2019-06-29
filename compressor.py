@@ -68,4 +68,4 @@ def load_image(path):
 
 
 if __name__ == '__main__':
-    load_image('marmite_500x500_gray.bmp')
+    load_image('images/marmite_500x500_gray.bmp')
