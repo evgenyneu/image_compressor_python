@@ -135,21 +135,21 @@ def matrix_scalar_multiply(matrix, scalar):
 
     # Copy the matrix, we don't want to modify the input matrix
     result = copy.deepcopy(matrix)
+
+    row_count, col_count = matrix_size(result)
     
-    if len(result) == 0:
+    if row_count == 0 or col_count == 0:
         raise ValueError(f"Matrix is empty.")
 
-    for i in range(len(result)):
+    for i in range(row_count):
         vector_or_number = result[i]
 
-        try:
-            # Test if this is a column vector by getting its length
-            row_length = len(vector_or_number)
-
-            for j in range(row_length):
-                vector_or_number[j] *= scalar
-        except TypeError:
-            # Must be a value of a row vector
-            result[i] *= scalar
+        for j in range(col_count):
+            try:
+                # Test if this is a column vector by getting its length
+                result[i][j] *= scalar 
+            except TypeError:
+                # Must be a value of a row vector
+                result[j] *= scalar
 
     return result
