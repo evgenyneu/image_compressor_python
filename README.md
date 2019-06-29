@@ -19,7 +19,7 @@ Run [make_grayscale.py](make_grayscale.py) to create a grayscale image.
 
 ## Testing
 
-Install the `pytest` Python package
+Install `pytest`
 
 ```
 pip install pytest
