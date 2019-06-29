@@ -4,7 +4,7 @@ This a Python program I wrote for fun to practice linear algebra that I learned 
 
 ## Setup
 
-The program depends on `imageio` and `numpy` libraries for opening/saving image files. Here is how to install it:
+Install the dependencies:
 
 ```
 pip install numpy
