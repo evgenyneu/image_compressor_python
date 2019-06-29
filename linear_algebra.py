@@ -142,11 +142,8 @@ def matrix_scalar_multiply(matrix, scalar):
         raise ValueError(f"Matrix is empty.")
 
     for i in range(row_count):
-        vector_or_number = result[i]
-
         for j in range(col_count):
             try:
-                # Test if this is a column vector by getting its length
                 result[i][j] *= scalar 
             except TypeError:
                 # Must be a value of a row vector
