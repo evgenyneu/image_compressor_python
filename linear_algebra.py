@@ -1,3 +1,7 @@
+"""
+Functions that perform linear algebra operations, like matrix multiplication.
+"""
+
 import math
 import copy
 
