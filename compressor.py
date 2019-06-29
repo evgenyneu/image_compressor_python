@@ -1,4 +1,41 @@
 import imageio
+import math
+
+def norm(vector):
+    """
+    Parameters
+    ----------
+    vector : list of floats
+        A vector. Also accepts column vectors: [[1], [2], [3]].
+
+    Returns
+    -------
+    float
+        Returns the norm of a vector.
+    """
+    if len(vector) == 0:
+        raise ValueError(f"Vector is empty.")
+
+    n = len(vector)
+    sum = 0
+
+    for i in range(n):
+        try:
+            # Assume it's a column vector
+            if len(vector[i]) == 1:
+                value = vector[i][0]
+            else:
+                raise ValueError(f"Not a column or row vector")
+
+        except TypeError:
+            # Must be a row vector
+            value = vector[i]
+
+        sum += value**2
+
+    return math.sqrt(sum)
+
+    
 
 
 def matrix_multiply(a, b):

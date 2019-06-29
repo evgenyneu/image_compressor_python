@@ -1,5 +1,26 @@
 import pytest
-from compressor import load_image, matrix_multiply
+from compressor import load_image, matrix_multiply, norm
+
+
+class TestNorm:
+    def test_norm_row_vector(self):
+        a = [1, 2, 2]
+        result = norm(a)
+        assert result == 3
+
+    def test_norm_column_vector(self):
+        a = [[1], [2], [2]]
+        result = norm(a)
+        print(type(result))
+        assert result == 3
+
+    def test_fail_empty_vector(self):
+        with pytest.raises(ValueError):
+            norm([])
+
+    def test_fail_non_column_or_row(self):
+        with pytest.raises(ValueError):
+            norm([[2, 3], [4, 5]])
 
 
 def test_matrix_multiply():
