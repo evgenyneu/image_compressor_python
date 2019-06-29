@@ -6,16 +6,8 @@ This a Python program I wrote for fun to practice linear algebra that I learned 
 
 The program depends on `imageio` and `numpy` libraries for opening/saving image files. Here is how to install it:
 
-Conda:
-
 ```
-conda install -c conda-forge imageio
-```
-
-
-Pip:
-
-```
+pip install numpy
 pip install imageio
 ```
 
@@ -27,7 +19,13 @@ Run [make_grayscale.py](make_grayscale.py) to create a grayscale image.
 
 ## Testing
 
-Install the `pytest` Python package and run the unit tests:
+Install the `pytest` Python package
+
+```
+pip install pytest
+```
+
+and run the unit tests:
 
 ```
 pytest
