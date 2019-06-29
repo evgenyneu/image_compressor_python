@@ -52,25 +52,28 @@ def norm(vector):
     float
         Returns vector's length.
     """
-    if len(vector) == 0:
+
+    row_count, col_count = matrix_size(vector)
+    
+    if row_count == 0 or col_count == 0:
         raise ValueError(f"Vector is empty.")
 
-    n = len(vector)
+    if row_count != 1 and col_count != 1:
+        raise ValueError(f"Not a vector.")
+
     sum = 0
 
-    for i in range(n):
-        try:
-            # Assume it's a column vector
-            if len(vector[i]) == 1:
-                value = vector[i][0]
-            else:
-                raise ValueError(f"Not a column or row vector")
+    for i in range(row_count):
+        for j in range(col_count):
+            try:
+                # Assume it's a 2d list
+                value = vector[i][j]
+                
+            except TypeError:
+                # Must be a simple list (a row vector)
+                value = vector[j]
 
-        except TypeError:
-            # Must be a row vector
-            value = vector[i]
-
-        sum += value**2
+            sum += value**2
 
     return math.sqrt(sum)
 
