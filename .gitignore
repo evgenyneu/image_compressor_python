@@ -3,6 +3,7 @@ data/observe
 __pycache__
 pyraf
 .cache
+.pytest_cache
 logbook.sublime-workspace
 login.cl
 code/python/test_data/30Oct18
