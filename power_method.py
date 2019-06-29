@@ -1,6 +1,8 @@
 """
-Calculating eigenvalues and eigenvectors of a matrix using the power method.
+Calculate eigenvalues and eigenvectors of a matrix using the power method.
 """
+
+from linear_algebra import matrix_size
 
 def eigen_system(matrix, max_eigenvalues):
     """
@@ -31,6 +33,10 @@ def eigen_system(matrix, max_eigenvalues):
         
     """
 
+    row_count, col_count = matrix_size(matrix)
 
-    
+    # Create an initial unit vector
+    unit_vector = [0] * col_count
+    unit_vector[0] = 1
+
     return 42
