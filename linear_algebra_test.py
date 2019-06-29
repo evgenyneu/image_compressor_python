@@ -1,5 +1,6 @@
 import pytest
-from linear_algebra import matrix_multiply, norm, matrix_scalar_multiply
+from linear_algebra import matrix_multiply, norm, matrix_scalar_multiply, \
+    matrix_size
 
 class TestNorm:
     def test_norm_row_vector(self):
@@ -55,3 +56,45 @@ class TestMatrixScalarMultiply:
     def test_fail_empty_vector(self):
         with pytest.raises(ValueError):
            matrix_scalar_multiply([], 2)
+
+class TestMatrixSize:
+    def test_matrix(self):
+        matrix = [[1, 2], [4, 5], [7, 8]] 
+        rows, columns = matrix_size(matrix)
+
+        assert rows == 3
+        assert columns == 2
+
+    def test_row_vector(self):
+        matrix = [1, 2, 3] 
+        rows, columns = matrix_size(matrix)
+
+        assert rows == 1
+        assert columns == 3
+
+    def test_row_vector2(self):
+        matrix = [[1, 2, 3]]
+        rows, columns = matrix_size(matrix)
+
+        assert rows == 1
+        assert columns == 3
+
+    def test_column_vector(self):
+        matrix = [[1], [2], [3]] 
+        rows, columns = matrix_size(matrix)
+
+        assert rows == 3
+        assert columns == 1
+
+    def test_empty(self):
+        matrix = [] 
+        rows, columns = matrix_size(matrix)
+
+        assert rows == 0
+        assert columns == 0
+
+    def test_incorrect_matrix(self):
+        matrix = [[1, 2, 3], [4, 5]] 
+
+        with pytest.raises(ValueError):
+            matrix_size(matrix)

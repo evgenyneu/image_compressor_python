@@ -5,6 +5,41 @@ Linear algebra functions (matrix multiplication etc.)
 import math
 import copy
 
+def matrix_size(matrix):
+    """
+    Parameters
+    ----------
+    matrix : list of floats
+        A matrix.
+
+    Returns
+    -------
+    tuple of two integers
+        Returns the size of a matrix. First integer is the number of rows.
+    """
+
+    rows = len(matrix)
+
+    if rows == 0:
+        columns = 0
+    else:
+        try:
+            columns = len(matrix[0])
+
+            # Check all rows have the same number of elements
+            for irow in range(rows):
+                current_columns = len(matrix[irow])
+
+                if current_columns != columns:
+                    raise ValueError(f"Matrix rows have different number of elements.") 
+    
+        except TypeError:
+            # Must be a row vector
+            columns = len(matrix)
+            rows = 1
+    
+    return (rows, columns)
+
 def norm(vector):
     """
     Parameters
