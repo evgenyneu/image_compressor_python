@@ -15,7 +15,7 @@ def matrix_size(matrix):
     Returns
     -------
     tuple of two integers
-        Returns the size of a matrix. First integer is the number of rows.
+        Returns the size of a matrix. First integer is the number of rows. Raises exception if rows have unequal number of elements.
     """
 
     rows = len(matrix)
