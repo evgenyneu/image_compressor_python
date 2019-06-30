@@ -6,6 +6,38 @@ import math
 import copy
 
 
+def dot_product(vector1, vector2):
+    """
+    Calculates a dot product of two vectors
+
+    Parameters
+    ----------
+    vector1, vector2 : list of list of numbers
+        Two n by 1 matrices.
+
+    Returns
+    -------
+    float
+        The dot product of two matrices
+    """
+
+    row_count1, col_count1 = matrix_size(vector1)
+    row_count2, col_count2 = matrix_size(vector2)
+
+    if row_count1 != row_count2:
+        raise ValueError(f"Incompatible dimensions.")
+
+    if col_count1 != 1 or col_count2 != 1:
+        raise ValueError(f"Matrices should be n by 1.")
+
+    sum = 0
+
+    for i in range(row_count1):
+        sum += vector1[i][0] * vector2[i][0] 
+
+    return sum
+
+
 def transpose(matrix):
     """
     Transposes a matrix.

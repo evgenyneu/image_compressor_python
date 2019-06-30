@@ -1,12 +1,10 @@
-from power_method import eigen_system
-import pytest
+from power_method import dominant_eigen_system
 
 
 class TestEigenSystem:
-    @pytest.mark.skip(reason="Unimplemented")
-    def test_eigen_system(self):
-        matrix = [[3, -2], [-3, 2]]
+    def test_dominant_eigen_system(self):
+        matrix = [[7, -2, 0], [-2, 6, -2], [0, -2, 5]]
 
-        result = eigen_system(matrix, 2)
+        result = dominant_eigen_system(matrix)
 
-        assert result == 42
+        assert result == 43

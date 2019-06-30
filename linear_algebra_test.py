@@ -1,6 +1,16 @@
 import pytest
 from linear_algebra import matrix_multiply, norm, matrix_scalar_multiply, \
-    matrix_size, transpose
+    matrix_size, transpose, dot_product
+
+
+class TestDotProduct:
+    def test_dot_product(self):
+        vector1 = [[1], [4], [7]]
+        vector2 = [[2], [5], [8]]
+
+        result = dot_product(vector1, vector2)
+
+        assert result == 78
 
 
 class TestTranspose:
