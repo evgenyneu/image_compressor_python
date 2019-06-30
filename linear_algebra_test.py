@@ -1,6 +1,15 @@
 import pytest
 from linear_algebra import matrix_multiply, norm, matrix_scalar_multiply, \
-    matrix_size, transpose, dot_product
+    matrix_size, transpose, dot_product, gramian
+
+
+class TestGramian:
+    def test_gramian(self):
+        matrix = [[3, -2], [-3, 2]]
+
+        result = gramian(matrix)
+
+        assert result == [[18, -12], [-12, 8]]
 
 
 class TestDotProduct:

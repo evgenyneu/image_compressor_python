@@ -6,6 +6,22 @@ import math
 import copy
 
 
+def gramian(matrix):
+    """
+    Parameters
+    ----------
+    matrix : list of list of floats
+        A matrix
+
+    Returns
+    -------
+    list of list of floats
+        The Gramian of `matrix`.
+    """
+
+    return matrix_multiply(transpose(matrix), matrix)
+
+
 def dot_product(vector1, vector2):
     """
     Calculates a dot product of two vectors
