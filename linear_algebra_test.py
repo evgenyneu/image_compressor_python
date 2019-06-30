@@ -1,6 +1,14 @@
 import pytest
 from linear_algebra import matrix_multiply, norm, matrix_scalar_multiply, \
-    matrix_size
+    matrix_size, transpose
+
+
+class TestTranspose:
+    def test_transpose(self):
+        matrix = [[1, 2], [4, 5], [7, 8]]
+        result = transpose(matrix)
+        assert result == [[1, 4, 7], [2, 5, 8]]
+
 
 class TestNorm:
     def test_norm_column_vector(self):
@@ -36,17 +44,17 @@ class TestMatrixMultiply:
 
 class TestMatrixScalarMultiply:
     def test_multiply_3_by_3_matrix(self):
-        matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] 
+        matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
         result = matrix_scalar_multiply(matrix, 2)
 
-        assert matrix == [[1, 2, 3], [4, 5, 6], [7, 8, 9]] # Ensure the input is unchanged
-        assert result == [[2, 4, 6], [8, 10, 12], [14, 16, 18]] 
+        assert matrix == [[1, 2, 3], [4, 5, 6], [7, 8, 9]]  # Ensure the input is unchanged
+        assert result == [[2, 4, 6], [8, 10, 12], [14, 16, 18]]
 
 
 class TestMatrixSize:
     def test_matrix(self):
-        matrix = [[1, 2], [4, 5], [7, 8]] 
+        matrix = [[1, 2], [4, 5], [7, 8]]
         rows, columns = matrix_size(matrix)
 
         assert rows == 3
@@ -60,14 +68,14 @@ class TestMatrixSize:
         assert columns == 3
 
     def test_column_vector(self):
-        matrix = [[1], [2], [3]] 
+        matrix = [[1], [2], [3]]
         rows, columns = matrix_size(matrix)
 
         assert rows == 3
         assert columns == 1
 
     def test_empty(self):
-        matrix = [] 
+        matrix = []
         rows, columns = matrix_size(matrix)
 
         assert rows == 0

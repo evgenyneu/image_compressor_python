@@ -5,6 +5,33 @@ Linear algebra functions (matrix multiplication etc.)
 import math
 import copy
 
+
+def transpose(matrix):
+    """
+    Transposes a matrix.
+
+    Parameters
+    ----------
+    matrix : list of lists of floats
+        A matrix.
+
+    Returns
+    -------
+    list of lists of floats
+        Transposed matrix.
+    """
+
+    row_count, col_count = matrix_size(matrix)
+
+    transposed = [[0] * row_count for i in range(col_count)]
+
+    for i in range(row_count):
+        for j in range(col_count):
+            transposed[j][i] = matrix[i][j]
+
+    return transposed
+
+
 def matrix_size(matrix):
     """
     Parameters
@@ -15,7 +42,7 @@ def matrix_size(matrix):
     Returns
     -------
     tuple of two integers
-        Returns the size of a matrix. First integer is the number of rows.
+        Size of a matrix. First integer is the number of rows.
     """
 
     rows = len(matrix)
@@ -27,6 +54,7 @@ def matrix_size(matrix):
 
     return (rows, columns)
 
+
 def norm(vector):
     """
     Parameters
@@ -37,11 +65,11 @@ def norm(vector):
     Returns
     -------
     float
-        Returns vector's length.
+        Vector's length.
     """
 
     row_count, col_count = matrix_size(vector)
-    
+
     if row_count == 0 or col_count == 0:
         raise ValueError(f"Vector is empty.")
 
@@ -55,6 +83,7 @@ def norm(vector):
             sum += (vector[i][j])**2
 
     return math.sqrt(sum)
+
 
 def matrix_multiply(a, b):
     """
@@ -94,6 +123,7 @@ def matrix_multiply(a, b):
 
     return product
 
+
 def matrix_scalar_multiply(matrix, scalar):
     """
     Multiplies a matrix with a scalar.
@@ -119,6 +149,6 @@ def matrix_scalar_multiply(matrix, scalar):
 
     for i in range(row_count):
         for j in range(col_count):
-            result[i][j] *= scalar 
+            result[i][j] *= scalar
 
     return result

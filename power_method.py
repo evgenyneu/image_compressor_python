@@ -4,6 +4,7 @@ Calculate eigenvalues and eigenvectors of a matrix using the power method.
 
 from linear_algebra import matrix_size
 
+
 def eigen_system(matrix, max_eigenvalues):
     """
     Calculates eigenvalues and eigenvectors of a matrix.

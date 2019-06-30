@@ -1,6 +1,7 @@
 from make_grayscale import make_grayscale
 import os
 
+
 def test_make_grayscale():
     output_path = "images/test_3x3_gray_test.bmp"
     os.remove(output_path) if os.path.exists(output_path) else None
