@@ -49,7 +49,7 @@ def dot_product(vector1, vector2):
     sum = 0
 
     for i in range(row_count1):
-        sum += vector1[i][0] * vector2[i][0] 
+        sum += vector1[i][0] * vector2[i][0]
 
     return sum
 
@@ -133,18 +133,48 @@ def norm(vector):
     return math.sqrt(sum)
 
 
+def matrix_add(a, b):
+    """
+    Add two matrices.
+
+    Parameters
+    ----------
+    a, b : list
+        Matrices to multiply.
+
+    Returns
+    -------
+    list
+        The product of the two matrices.
+    """
+
+    m1, n1 = matrix_size(a)
+    m2, n2 = matrix_size(b)
+
+    if m1 != m2 or n1 != n2:
+        raise ValueError(f"Incompatible dimensions.")
+
+    sum = [[0] * n1 for i in range(m1)]
+
+    for i in range(m1):
+        for j in range(n1):
+            sum[i][j] = a[i][j] + b[i][j]
+
+    return sum
+
+
 def matrix_multiply(a, b):
     """
     Multiplies two matrices.
 
     Parameters
     ----------
-    a, b : list of numbers
+    a, b : list
         Matrices to multiply.
 
     Returns
     -------
-    list of numbers
+    list
         The product of the two matrices.
     """
 
@@ -178,7 +208,7 @@ def matrix_scalar_multiply(matrix, scalar):
 
     Parameters
     ----------
-    matrix : list of float
+    matrix : list
         Matrix to be multiplied by the scalar.
 
     scalar : flat
@@ -186,7 +216,7 @@ def matrix_scalar_multiply(matrix, scalar):
 
     Returns
     -------
-    list of numbers
+    list
         Matrix, the result of the matrix-scalar multiplication.
     """
 

@@ -1,6 +1,6 @@
 import pytest
 from linear_algebra import matrix_multiply, norm, matrix_scalar_multiply, \
-    matrix_size, transpose, dot_product, gramian
+    matrix_size, transpose, dot_product, gramian, matrix_add
 
 
 class TestGramian:
@@ -42,6 +42,16 @@ class TestNorm:
     def test_fail_non_column_or_row(self):
         with pytest.raises(ValueError):
             norm([[2, 3], [4, 5]])
+
+
+class TestMatrixAdd:
+    def test_matrix_add(self):
+        a = [[1, 2, 3], [4, 5, 6]]
+        b = [[-2, 0, 1], [7, -2, 13]]
+
+        result = matrix_add(a, b)
+
+        assert result == [[-1, 2, 4], [11, 3, 19]]
 
 
 class TestMatrixMultiply:
