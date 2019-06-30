@@ -17,7 +17,7 @@ class TestDominantEigenSystem:
 
 class TestEigenSystem:
     def test_eigen_system(self):
-        matrix = [[3, -2], [-3, 2]]
+        matrix = [[2, -1], [-1, 2]]
 
         result = eigen_system(matrix, max_eigenvalues=2)
 

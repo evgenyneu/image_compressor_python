@@ -3,7 +3,7 @@ Calculate eigenvalues and eigenvectors of a matrix using the power method.
 """
 
 from linear_algebra import matrix_size, matrix_multiply, norm, \
-    matrix_scalar_multiply, dot_product, gramian, transpose
+    matrix_scalar_multiply, dot_product, gramian, transpose, matrix_add
 
 from svd import find_u_from_v
 import math
@@ -62,17 +62,24 @@ def eigen_system(matrix, max_eigenvalues):
         List of eigenvalues and eigenvectors of the `matrix`.
     """
 
-    matrix_gramian = gramian(matrix)
-    eigenvalue, eigenvector = dominant_eigen_system(matrix_gramian, 10)
-    singular_value = math.sqrt(eigenvalue)
+    eigen_system = []
 
-    u = find_u_from_v(matrix, v=eigenvector, singular_value=singular_value)
+    for iteration in range(max_eigenvalues):
+        matrix_gramian = gramian(matrix)
+        eigenvalue, eigenvector = dominant_eigen_system(matrix_gramian, 10)
+        eigen_system.append((eigenvalue, eigenvector))
 
-    # Calculate the first dominant term of the singular value expansion
-    dominant_submatrix = matrix_multiply(u, transpose(eigenvector))
-    dominant_submatrix = matrix_scalar_multiply(dominant_submatrix, -singular_value)
+        if iteration == (max_eigenvalues - 1):
+            break
 
-    # Subtract the dominant term
-    # matrix_add(matrix, dominant_submatrix)
+        singular_value = math.sqrt(eigenvalue)
+        u = find_u_from_v(matrix, v=eigenvector, singular_value=singular_value)
 
-    return 234
+        # Calculate the negative of the first dominant term of the singular value expansion
+        dominant = matrix_multiply(u, transpose(eigenvector))
+        dominant = matrix_scalar_multiply(dominant, -singular_value)
+
+        # Subtract the dominant term
+        matrix = matrix_add(matrix, dominant)
+
+    return eigen_system
