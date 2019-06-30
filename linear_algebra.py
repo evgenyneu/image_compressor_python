@@ -15,29 +15,16 @@ def matrix_size(matrix):
     Returns
     -------
     tuple of two integers
-        Returns the size of a matrix. First integer is the number of rows. Raises exception if rows have unequal number of elements.
+        Returns the size of a matrix. First integer is the number of rows.
     """
 
     rows = len(matrix)
 
-    if rows == 0:
-        columns = 0
+    if rows > 0:
+        columns = len(matrix[0])
     else:
-        try:
-            columns = len(matrix[0])
+        columns = 0
 
-            # Check all rows have the same number of elements
-            for irow in range(rows):
-                current_columns = len(matrix[irow])
-
-                if current_columns != columns:
-                    raise ValueError(f"Matrix rows have unequal number of elements.") 
-    
-        except TypeError:
-            # Must be a row vector
-            columns = len(matrix)
-            rows = 1
-    
     return (rows, columns)
 
 def norm(vector):
@@ -65,15 +52,7 @@ def norm(vector):
 
     for i in range(row_count):
         for j in range(col_count):
-            try:
-                # Assume it's a 2d list
-                value = vector[i][j]
-                
-            except TypeError:
-                # Must be a simple list (a row vector)
-                value = vector[j]
-
-            sum += value**2
+            sum += (vector[i][j])**2
 
     return math.sqrt(sum)
 
@@ -99,9 +78,6 @@ def matrix_multiply(a, b):
     m, n = matrix_size(a)
     b_n, p = matrix_size(b)
 
-    if m == 0 or n == 0 or p == 0:
-        raise ValueError(f"Supplied matrix is empty.")
-
     if n != b_n:
         raise ValueError(f"Incompatible dimensions.")
 
@@ -111,7 +87,7 @@ def matrix_multiply(a, b):
         for j in range(p):
             element = 0
 
-            for k in range(0, n):
+            for k in range(n):
                 element += a[i][k] * b[k][j]
 
             product[i][j] = element
@@ -140,16 +116,9 @@ def matrix_scalar_multiply(matrix, scalar):
     result = copy.deepcopy(matrix)
 
     row_count, col_count = matrix_size(result)
-    
-    if row_count == 0 or col_count == 0:
-        raise ValueError(f"Matrix is empty.")
 
     for i in range(row_count):
         for j in range(col_count):
-            try:
-                result[i][j] *= scalar 
-            except TypeError:
-                # Must be a value of a row vector
-                result[j] *= scalar
+            result[i][j] *= scalar 
 
     return result
