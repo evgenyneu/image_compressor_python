@@ -26,7 +26,7 @@ class TestTranspose:
     def test_transpose(self):
         matrix = [[1, 2], [4, 5], [7, 8]]
         result = transpose(matrix)
-        assert result == [[1, 4, 7], [2, 5, 8]]
+        assert result.tolist() == [[1, 4, 7], [2, 5, 8]]
 
 
 class TestNorm:

@@ -2,8 +2,6 @@
 Linear algebra functions (matrix multiplication, vector length etc.)
 """
 
-import math
-import copy
 import numpy as np
 
 
@@ -11,12 +9,12 @@ def gramian(matrix):
     """
     Parameters
     ----------
-    matrix : list
+    matrix : numpy.ndarray
         A matrix
 
     Returns
     -------
-    list
+    numpy.ndarray
         The Gramian of `matrix`.
     """
 
@@ -134,12 +132,6 @@ def matrix_multiply(a, b):
     # We use the following letters for matrix dimensions:
     #   a is m by n,
     #   b is n by p.
-
-    m, n = matrix_size(a)
-    b_n, p = matrix_size(b)
-
-    if n != b_n:
-        raise ValueError(f"Incompatible dimensions.")
 
     return np.dot(a, b)
 
