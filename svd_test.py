@@ -69,3 +69,16 @@ class TestSingularValueExpansion:
                 [-0.9999999999999999, 1.9999999999999996]
             ]
 
+    def test_singular_value_expansion_zero_singular_value(self):
+        svd_data = [
+            (
+                [[0.7071067811865476], [-0.7071067811865476]],
+                5.0990195135927845,
+                [[0.8320502943378436], [-0.5547001962252291]]
+            )
+        ]
+
+        result = singular_value_expansion(svd_data)
+
+        assert result == [[3, -2], [-3, 2]]
+
