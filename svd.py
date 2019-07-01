@@ -86,8 +86,8 @@ def svd(matrix, max_eigenvalues, iterations):
 
 def singular_value_expansion(data):
     """
-    Performs singular value expansion by reconstructing the original `matrix`:
-        matrix = U Σ V^T.
+    Performs singular value expansion by reconstructing the original `matrix`
+    from its SVD UΣV^T.
 
     Parameters
     ----------
@@ -102,7 +102,7 @@ def singular_value_expansion(data):
     Returns
     -------
     list
-        Matrix, which is the product of svd U Σ V^T.
+        Matrix reconstructed form its SVD UΣV^T.
     """
 
     if len(data) == 0:
