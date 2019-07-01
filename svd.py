@@ -107,9 +107,10 @@ def singular_value_expansion(data):
     if len(data) == 0:
         return
 
-    size = len(data[0][0])
+    col_number = len(data[0][0])
+    row_number = len(data[0][2])
 
-    matrix = np.zeros([size, size])
+    matrix = np.zeros([col_number, row_number])
 
     for data_item in data:
         u = data_item[0]
