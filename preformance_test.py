@@ -1,4 +1,4 @@
-from linear_algebra import norm
+from linear_algebra import transpose, transpose_two
 from random import randint
 from timeit import default_timer
 import numpy as np
@@ -6,11 +6,11 @@ import numpy as np
 
 def test_matrix_multiply_performance():
     size = 500
-    # a = [[randint(0, 100) for _ in range(1)] for i in range(size)]
-    # b = [[randint(0, 100) for _ in range(1)] for i in range(size)]
+    # a = [[randint(0, 100) for _ in range(size)] for i in range(size)]
+    # b = [[randint(0, 100) for _ in range(size)] for i in range(size)]
 
     # start = default_timer()
-    # result_one = norm(a)
+    # result_one = transpose(a)
     # end = default_timer()
 
     # print(f"Duration (one): {end - start} s")
@@ -19,12 +19,12 @@ def test_matrix_multiply_performance():
     # b = np.array(b)
 
     # start = default_timer()
-    # result_two = norm_two(a)
+    # result_two = transpose_two(a)
     # end = default_timer()
 
     # print(f"Duration (two): {end - start} s")
 
-    # assert result_one == result_two
+    # assert result_one == result_two.tolist()
 
     # start = default_timer()
     # result_two = matrix_multiply_two(a, b)

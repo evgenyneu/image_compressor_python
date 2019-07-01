@@ -61,31 +61,23 @@ def transpose(matrix):
 
     Parameters
     ----------
-    matrix : list
+    matrix : numpy.ndarray
         A matrix.
 
     Returns
     -------
-    list
+    numpy.ndarray
         Transposed matrix.
     """
 
-    row_count, col_count = matrix_size(matrix)
-
-    transposed = [[0] * row_count for i in range(col_count)]
-
-    for i in range(row_count):
-        for j in range(col_count):
-            transposed[j][i] = matrix[i][j]
-
-    return transposed
+    return np.transpose(matrix)
 
 
 def matrix_size(matrix):
     """
     Parameters
     ----------
-    matrix : list of floats
+    matrix : numpy.ndarray
         A matrix.
 
     Returns
