@@ -109,16 +109,15 @@ def singular_value_expansion(data):
 
     size = len(data[0][0])
 
-    matrix = [[0] * size for i in range(size)]
+    matrix = np.zeros([size, size])
 
     for data_item in data:
         u = data_item[0]
         singular_value = data_item[1]
         v = data_item[2]
 
-        product = matrix_multiply(u, transpose(v))
-        product = matrix_scalar_multiply(product, singular_value)
-        matrix = matrix_add(matrix, product)
+        product = singular_value * (u @ np.transpose(v))
+        matrix = matrix + product
 
     return matrix
 

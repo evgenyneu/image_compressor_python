@@ -49,38 +49,38 @@ class TestSVD:
         assert_allclose(result[0][2], [[0.8320502943378437], [-0.5547001962252291]])
 
 
-# class TestSingularValueExpansion:
-#     def test_singular_value_expansion(self):
-#         svd_data = [
-#             (
-#                 [[0.7071067812541464], [-0.7071067811189488]],
-#                 2.9999999999999996,
-#                 [[0.7071067813893437], [-0.7071067809837512]]
-#              ),
-#             (
-#                 [[0.7071067805781589], [0.7071067817949361]],
-#                 0.9999999999999998,
-#                 [[0.7071067809837509], [0.707106781389344]]
-#             )
-#         ]
+class TestSingularValueExpansion:
+    def test_singular_value_expansion(self):
+        svd_data = [
+            (
+                np.array([[0.7071067812541464], [-0.7071067811189488]]),
+                2.9999999999999996,
+                np.array([[0.7071067813893437], [-0.7071067809837512]])
+             ),
+            (
+                np.array([[0.7071067805781589], [0.7071067817949361]]),
+                0.9999999999999998,
+                np.array([[0.7071067809837509], [0.707106781389344]])
+            )
+        ]
 
-#         result = singular_value_expansion(svd_data)
+        result = singular_value_expansion(svd_data)
 
-#         assert result == [
-#                 [1.9999999999999996, -0.9999999999999998],
-#                 [-0.9999999999999999, 1.9999999999999996]
-#             ]
+        assert_allclose(result, [
+                [1.9999999999999996, -0.9999999999999998],
+                [-0.9999999999999999, 1.9999999999999996]
+            ])
 
-#     def test_singular_value_expansion_zero_singular_value(self):
-#         svd_data = [
-#             (
-#                 [[0.7071067811865476], [-0.7071067811865476]],
-#                 5.0990195135927845,
-#                 [[0.8320502943378436], [-0.5547001962252291]]
-#             )
-#         ]
+    def test_singular_value_expansion_zero_singular_value(self):
+        svd_data = [
+            (
+                np.array([[0.7071067811865476], [-0.7071067811865476]]),
+                5.0990195135927845,
+                np.array([[0.8320502943378436], [-0.5547001962252291]])
+            )
+        ]
 
-#         result = singular_value_expansion(svd_data)
+        result = singular_value_expansion(svd_data)
 
-#         assert result == [[3, -2], [-3, 2]]
+        assert_allclose(result, [[3, -2], [-3, 2]])
 
