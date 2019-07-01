@@ -1,4 +1,9 @@
-from compressor import load_image
+from compressor import load_image, compress_image
+
+
+def test_compress_image():
+    # compress_image("images/marmite_500x500_gray.bmp")
+    assert 1 == 1
 
 
 def test_load_image():

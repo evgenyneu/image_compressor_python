@@ -38,8 +38,6 @@ class TestSVD:
 
         result = svd(matrix, max_eigenvalues=2, iterations=10)
 
-        print(result)
-
         assert len(result) == 1
 
         assert result[0][0] == [[0.7071067811865476], [-0.7071067811865476]]
