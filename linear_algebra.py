@@ -4,8 +4,6 @@ Linear algebra functions (matrix multiplication, vector length etc.)
 
 import math
 import copy
-from itertools import starmap
-from operator import mul
 import numpy as np
 
 
@@ -172,79 +170,12 @@ def matrix_multiply(a, b):
 
     Parameters
     ----------
-    a, b : list
+    a, b : numpy.ndarray
         Matrices to multiply.
 
     Returns
     -------
-    list
-        The product of the two matrices.
-    """
-
-    # We use the following letters for matrix dimensions:
-    #   a is m by n,
-    #   b is n by p.
-
-    m, n = matrix_size(a)
-    b_n, p = matrix_size(b)
-
-    if n != b_n:
-        raise ValueError(f"Incompatible dimensions.")
-
-    product = [[0] * p for i in range(m)]
-
-    for i in range(m):
-        for j in range(p):
-            element = 0
-
-            for k in range(n):
-                element += a[i][k] * b[k][j]
-
-            product[i][j] = element
-
-    return product
-
-
-def matrix_multiply_two(a, b):
-    """
-    Multiplies two matrices.
-
-    Parameters
-    ----------
-    a, b : list
-        Matrices to multiply.
-
-    Returns
-    -------
-    list
-        The product of the two matrices.
-    """
-
-    # We use the following letters for matrix dimensions:
-    #   a is m by n,
-    #   b is n by p.
-
-    m, n = matrix_size(a)
-    b_n, p = matrix_size(b)
-
-    if n != b_n:
-        raise ValueError(f"Incompatible dimensions.")
-
-    return [[sum(starmap(mul, zip(row, col))) for col in zip(*b)] for row in a]
-
-
-def matrix_multiply_three(a, b):
-    """
-    Multiplies two matrices.
-
-    Parameters
-    ----------
-    a, b : list
-        Matrices to multiply.
-
-    Returns
-    -------
-    list
+    numpy.ndarray
         The product of the two matrices.
     """
 
@@ -267,7 +198,7 @@ def matrix_scalar_multiply(matrix, scalar):
 
     Parameters
     ----------
-    matrix : list
+    matrix : numpy.ndarray
         Matrix to be multiplied by the scalar.
 
     scalar : flat
@@ -275,17 +206,8 @@ def matrix_scalar_multiply(matrix, scalar):
 
     Returns
     -------
-    list
+    numpy.ndarray
         Matrix, the result of the matrix-scalar multiplication.
     """
 
-    # Copy the matrix, we don't want to modify the input matrix
-    result = copy.deepcopy(matrix)
-
-    row_count, col_count = matrix_size(result)
-
-    for i in range(row_count):
-        for j in range(col_count):
-            result[i][j] *= scalar
-
-    return result
+    return np.multiply(scalar, matrix)

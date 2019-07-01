@@ -61,7 +61,7 @@ class TestMatrixMultiply:
 
         result = matrix_multiply(a, b)
 
-        assert result == [[6, 12], [15, 36], [24, 60]]
+        assert result.tolist() == [[6, 12], [15, 36], [24, 60]]
 
     def test_fail_incompatible_dimensions(self):
         a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -78,7 +78,7 @@ class TestMatrixScalarMultiply:
         result = matrix_scalar_multiply(matrix, 2)
 
         assert matrix == [[1, 2, 3], [4, 5, 6], [7, 8, 9]]  # Ensure the input is unchanged
-        assert result == [[2, 4, 6], [8, 10, 12], [14, 16, 18]]
+        assert result.tolist() == [[2, 4, 6], [8, 10, 12], [14, 16, 18]]
 
 
 class TestMatrixSize:
