@@ -1,10 +1,11 @@
 from power_method import dominant_eigen_system
 from pytest import approx
+import numpy as np
 
 
 class TestDominantEigenSystem:
     def test_dominant_eigen_system(self):
-        matrix = [[7, -2, 0], [-2, 6, -2], [0, -2, 5]]
+        matrix = np.array([[7, -2, 0], [-2, 6, -2], [0, -2, 5]])
 
         eigenvalue, eigenvector = dominant_eigen_system(matrix, 4)
 
