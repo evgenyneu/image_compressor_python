@@ -11,7 +11,7 @@ def test_compress_image():
     os.remove(path_out)
 
 
-# @pytest.mark.skip(reason="Long test that creates images at different resolutions")
+@pytest.mark.skip(reason="Long test that creates images at different resolutions")
 def test_compress_image_color():
     for size in [[100, 100], [500, 500], [750, 375], [1000, 1000]]:
         width = size[0]
