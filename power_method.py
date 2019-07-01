@@ -16,7 +16,7 @@ def dominant_eigen_system(matrix, iterations):
 
     Parameters
     ----------
-    matrix : list
+    matrix : numpy.ndarray
         A symmetric matrix.
 
     iterations : int
@@ -24,7 +24,7 @@ def dominant_eigen_system(matrix, iterations):
 
     Returns
     -------
-    tuple of (Int, list)
+    tuple of (Int, numpy.ndarray)
         Dominant eigenvalue and a dominant unit eigenvector.
         The list is empty if the dominant eigenvalue is zero.
     """

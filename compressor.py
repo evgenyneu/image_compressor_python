@@ -1,5 +1,6 @@
 import imageio
 from svd import svd
+import numpy as np
 
 
 def compress_image(path):
@@ -22,11 +23,11 @@ def load_image(path):
 
     Returns
     -------
-    imageio.core.util.Array
+    numpy.ndarray
         Array containing image data.
     """
 
-    return imageio.imread(path)
+    return np.array(imageio.imread(path))
 
 
 if __name__ == '__main__':

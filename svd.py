@@ -14,10 +14,10 @@ def find_u_from_v(matrix, v, singular_value):
 
     Parameters
     ----------
-    matrix : list of list of float
+    matrix : numpy.ndarray
         Matrix for which the SVD is calculated
 
-    v : list of list of float
+    v : numpy.ndarray
         A column vector of V matrix, it is the eigenvector of the Gramian of `matrix`.
 
     singular_value : float
@@ -25,7 +25,7 @@ def find_u_from_v(matrix, v, singular_value):
 
     Returns
     -------
-    list of list of floats
+    numpy.ndarray
         u column vector of the U matrix in the SVD.
     """
 
@@ -38,7 +38,7 @@ def svd(matrix, max_eigenvalues, iterations):
 
     Parameters
     ----------
-    matrix : list
+    matrix : numpy.ndarray
         A matrix.
 
     max_eigenvalues : int
@@ -49,7 +49,7 @@ def svd(matrix, max_eigenvalues, iterations):
 
     Returns
     -------
-    list of tuples (list, float, list)
+    list of tuples (numpy.ndarray, float, numpy.ndarray)
         List of tuples (u, sigma, v), where
             `u` is a column vector of U matrix,
             `sigma` is the corresponding singular value of `matrix`,
@@ -92,15 +92,15 @@ def singular_value_expansion(data):
     ----------
     data : list of tuples
         List of tuples produced by `svd` function: (u, sigma, v), where
-            `u` is a column vector of U matrix,
-            `sigma` is the corresponding singular value of `matrix`,
+            `u`: numpy.ndarray is a column vector of U matrix,
+            `sigma`: float is the corresponding singular value of `matrix`,
                 which are the diagonal entries of Σ matrix,
-            `v` is a column vector of V matrix
+            `v`: numpy.ndarray is a column vector of V matrix
         in `matrix = U Σ V^T` svd.
 
     Returns
     -------
-    list
+    numpy.ndarray
         Matrix reconstructed form its SVD UΣV^T.
     """
 
