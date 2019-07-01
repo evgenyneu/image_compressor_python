@@ -2,7 +2,7 @@
 Singular value decomposition and expansion.
 """
 
-from linear_algebra import matrix_multiply, matrix_scalar_multiply, gramian, transpose, matrix_add
+from linear_algebra import gramian
 from power_method import dominant_eigen_system
 import math
 import numpy as np
@@ -120,4 +120,3 @@ def singular_value_expansion(data):
         matrix = matrix + product
 
     return matrix
-

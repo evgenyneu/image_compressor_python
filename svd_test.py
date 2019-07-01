@@ -83,4 +83,3 @@ class TestSingularValueExpansion:
         result = singular_value_expansion(svd_data)
 
         assert_allclose(result, [[3, -2], [-3, 2]])
-

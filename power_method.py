@@ -2,8 +2,7 @@
 Calculate eigenvalues and eigenvectors of a matrix using the power method.
 """
 
-from linear_algebra import matrix_size, matrix_multiply, norm, \
-    matrix_scalar_multiply, dot_product
+from linear_algebra import matrix_size, dot_product
 
 import numpy as np
 
