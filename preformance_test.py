@@ -1,4 +1,4 @@
-from linear_algebra import transpose, transpose_two
+from linear_algebra import dot_product
 from random import randint
 from timeit import default_timer
 import numpy as np
@@ -6,11 +6,11 @@ import numpy as np
 
 def test_matrix_multiply_performance():
     size = 500
-    # a = [[randint(0, 100) for _ in range(size)] for i in range(size)]
-    # b = [[randint(0, 100) for _ in range(size)] for i in range(size)]
+    # a = [[randint(0, 100) for _ in range(1)] for i in range(size)]
+    # b = [[randint(0, 100) for _ in range(1)] for i in range(size)]
 
     # start = default_timer()
-    # result_one = transpose(a)
+    # result_one = dot_product(a, b)
     # end = default_timer()
 
     # print(f"Duration (one): {end - start} s")
@@ -19,7 +19,7 @@ def test_matrix_multiply_performance():
     # b = np.array(b)
 
     # start = default_timer()
-    # result_two = transpose_two(a)
+    # result_two = dot_product_two(a, b)
     # end = default_timer()
 
     # print(f"Duration (two): {end - start} s")
