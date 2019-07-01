@@ -140,28 +140,16 @@ def matrix_add(a, b):
 
     Parameters
     ----------
-    a, b : list
+    a, b : numpy.ndarray
         Matrices to multiply.
 
     Returns
     -------
-    list
+    numpy.ndarray
         The product of the two matrices.
     """
 
-    m1, n1 = matrix_size(a)
-    m2, n2 = matrix_size(b)
-
-    if m1 != m2 or n1 != n2:
-        raise ValueError(f"Incompatible dimensions.")
-
-    sum = [[0] * n1 for i in range(m1)]
-
-    for i in range(m1):
-        for j in range(n1):
-            sum[i][j] = a[i][j] + b[i][j]
-
-    return sum
+    return np.add(a, b)
 
 
 def matrix_multiply(a, b):

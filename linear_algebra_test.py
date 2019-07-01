@@ -51,7 +51,7 @@ class TestMatrixAdd:
 
         result = matrix_add(a, b)
 
-        assert result == [[-1, 2, 4], [11, 3, 19]]
+        assert result.tolist() == [[-1, 2, 4], [11, 3, 19]]
 
 
 class TestMatrixMultiply:
