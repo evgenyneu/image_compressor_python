@@ -36,7 +36,7 @@ def dot_product(vector1, vector2):
         The dot product of two matrices
     """
 
-    return np.dot(np.transpose(vector1), vector2)[0,0]
+    return np.dot(np.transpose(vector1), vector2)[0, 0]
 
 
 def matrix_size(matrix):
