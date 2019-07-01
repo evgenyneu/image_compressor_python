@@ -1,4 +1,4 @@
-from power_method import dominant_eigen_system, eigen_system
+from power_method import dominant_eigen_system, svd
 from pytest import approx
 
 
@@ -15,10 +15,19 @@ class TestDominantEigenSystem:
         assert eigenvector[2][0] == approx(0.201857, rel=1e-5)
 
 
-class TestEigenSystem:
-    def test_eigen_system(self):
+class TestSVD:
+    def test_svd(self):
         matrix = [[2, -1], [-1, 2]]
 
-        result = eigen_system(matrix, max_eigenvalues=2)
+        result = svd(matrix, max_eigenvalues=2)
 
-        assert result == 23
+        assert len(result) == 2
+
+        assert result[0][0] == [[0.7071067812541464], [-0.7071067811189488]]
+        assert result[0][1] == 2.9999999999999996
+        assert result[0][2] == [[0.7071067813893437], [-0.7071067809837512]]
+
+        assert result[1][0] == [[0.7071067805781589], [0.7071067817949361]]
+        assert result[1][1] == 0.9999999999999998
+        assert result[1][2] == [[0.7071067809837509], [0.707106781389344]]
+    

@@ -10,12 +10,12 @@ def gramian(matrix):
     """
     Parameters
     ----------
-    matrix : list of list of floats
+    matrix : list
         A matrix
 
     Returns
     -------
-    list of list of floats
+    list
         The Gramian of `matrix`.
     """
 
@@ -28,7 +28,7 @@ def dot_product(vector1, vector2):
 
     Parameters
     ----------
-    vector1, vector2 : list of list of numbers
+    vector1, vector2 : list
         Two n by 1 matrices.
 
     Returns
@@ -60,12 +60,12 @@ def transpose(matrix):
 
     Parameters
     ----------
-    matrix : list of lists of floats
+    matrix : list
         A matrix.
 
     Returns
     -------
-    list of lists of floats
+    list
         Transposed matrix.
     """
 

@@ -16,7 +16,7 @@ def dominant_eigen_system(matrix, iterations):
 
     Parameters
     ----------
-    matrix : list of list of floats
+    matrix : list
         A symmetric matrix.
 
     iterations : int
@@ -24,7 +24,7 @@ def dominant_eigen_system(matrix, iterations):
 
     Returns
     -------
-    tuple of (Int, matrix)
+    tuple of (Int, list)
         Dominant eigenvalue and a dominant unit eigenvector.
     """
 
@@ -46,40 +46,47 @@ def dominant_eigen_system(matrix, iterations):
     return (eigenvalue, unit_vector)
 
 
-def eigen_system(matrix, max_eigenvalues):
+def svd(matrix, max_eigenvalues):
     """
+    Performs singular value decomposition of the matrix.
+
     Parameters
     ----------
-    matrix : list of list of floats
-        A symmetric matrix.
+    matrix : list
+        A matrix.
 
     max_eigenvalues : int
-        The maximum number of eigenvalues to calculate.
+        Maximum number of eigenvalues to calculate.
 
     Returns
     -------
-    list of tuples (float, list)
-        List of eigenvalues and eigenvectors of the `matrix`.
+    list of tuples (list, float, list)
+        List of tuples (u, sigma, v), where
+            `u` is a column vector of U matrix,
+            `sigma` is the corresponding singular value of `matrix`,
+                which are the diagonal entries of Σ matrix,
+            `v` is a column vector of V matrix
+        in `matrix = U Σ V^T` svd.
     """
 
-    eigen_system = []
+    svd_items = []
 
     for iteration in range(max_eigenvalues):
         matrix_gramian = gramian(matrix)
-        eigenvalue, eigenvector = dominant_eigen_system(matrix_gramian, 10)
-        eigen_system.append((eigenvalue, eigenvector))
+        eigenvalue, v = dominant_eigen_system(matrix_gramian, 10)
 
-        if iteration == (max_eigenvalues - 1):
+        if iteration == (max_eigenvalues):
             break
 
         singular_value = math.sqrt(eigenvalue)
-        u = find_u_from_v(matrix, v=eigenvector, singular_value=singular_value)
+        u = find_u_from_v(matrix, v=v, singular_value=singular_value)
+        svd_items.append((u, singular_value, v))
 
         # Calculate the negative of the first dominant term of the singular value expansion
-        dominant = matrix_multiply(u, transpose(eigenvector))
+        dominant = matrix_multiply(u, transpose(v))
         dominant = matrix_scalar_multiply(dominant, -singular_value)
 
         # Subtract the dominant term
         matrix = matrix_add(matrix, dominant)
 
-    return eigen_system
+    return svd_items
