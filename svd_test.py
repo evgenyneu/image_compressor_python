@@ -1,14 +1,15 @@
 from svd import find_u_from_v, svd, singular_value_expansion
 import math
 from pytest import approx
+import numpy as np
 
 
 class TestVectorU:
     def test_find_u_from_v(self):
-        matrix = [[3, -2], [-3, 2]]
+        matrix = np.array([[3, -2], [-3, 2]])
         eigenvalue = 25.999999999999996
         singular_value = math.sqrt(eigenvalue)
-        eigenvector = [[0.8320502943378436], [-0.5547001962252291]]
+        eigenvector = np.array([[0.8320502943378436], [-0.5547001962252291]])
 
         result = find_u_from_v(matrix, v=eigenvector, singular_value=singular_value)
 

@@ -28,8 +28,7 @@ def find_u_from_v(matrix, v, singular_value):
         u column vector of the U matrix in the SVD.
     """
 
-    product = matrix_multiply(matrix, v)
-    return matrix_scalar_multiply(product, 1 / singular_value)
+    return matrix @ v / singular_value
 
 
 def svd(matrix, max_eigenvalues, iterations):
