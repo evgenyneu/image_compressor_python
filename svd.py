@@ -1,3 +1,7 @@
+"""
+Singular value decomposition and expansion.
+"""
+
 from linear_algebra import matrix_multiply, matrix_scalar_multiply, gramian, transpose, matrix_add
 from power_method import dominant_eigen_system
 import math

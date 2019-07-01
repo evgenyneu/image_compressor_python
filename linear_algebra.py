@@ -1,5 +1,5 @@
 """
-Linear algebra functions (matrix multiplication etc.)
+Linear algebra functions (matrix multiplication, vector length etc.)
 """
 
 import math
