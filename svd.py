@@ -5,6 +5,7 @@ Singular value decomposition and expansion.
 from linear_algebra import matrix_multiply, matrix_scalar_multiply, gramian, transpose, matrix_add
 from power_method import dominant_eigen_system
 import math
+import numpy as np
 
 
 def find_u_from_v(matrix, v, singular_value):
@@ -73,12 +74,11 @@ def svd(matrix, max_eigenvalues, iterations):
         if iteration == (max_eigenvalues - 1):
             break
 
-        # Calculate the negative of the first dominant term of the singular value expansion
-        dominant = matrix_multiply(u, transpose(v))
-        dominant = matrix_scalar_multiply(dominant, -singular_value)
+        # Calculate the first dominant term of the singular value expansion
+        dominant = u @ np.transpose(v) * singular_value
 
         # Subtract the dominant term
-        matrix = matrix_add(matrix, dominant)
+        matrix = matrix - dominant
 
     return svd_items
 
