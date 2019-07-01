@@ -108,8 +108,8 @@ def norm(vector):
     """
     Parameters
     ----------
-    vector : list of floats
-        A vector. Also accepts column vectors: [[1], [2], [3]].
+    vector : numpy.ndarray
+        A vector.
 
     Returns
     -------
@@ -117,21 +117,7 @@ def norm(vector):
         Vector's length.
     """
 
-    row_count, col_count = matrix_size(vector)
-
-    if row_count == 0 or col_count == 0:
-        raise ValueError(f"Vector is empty.")
-
-    if row_count != 1 and col_count != 1:
-        raise ValueError(f"Not a vector.")
-
-    sum = 0
-
-    for i in range(row_count):
-        for j in range(col_count):
-            sum += (vector[i][j])**2
-
-    return math.sqrt(sum)
+    return np.linalg.norm(vector)
 
 
 def matrix_add(a, b):

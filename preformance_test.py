@@ -1,4 +1,4 @@
-from linear_algebra import matrix_add
+from linear_algebra import norm
 from random import randint
 from timeit import default_timer
 import numpy as np
@@ -6,25 +6,25 @@ import numpy as np
 
 def test_matrix_multiply_performance():
     size = 500
-    a = [[randint(0, 100) for _ in range(size)] for i in range(size)]
-    b = [[randint(0, 100) for _ in range(size)] for i in range(size)]
+    # a = [[randint(0, 100) for _ in range(1)] for i in range(size)]
+    # b = [[randint(0, 100) for _ in range(1)] for i in range(size)]
 
-    start = default_timer()
-    result_one = matrix_add(a, b)
-    end = default_timer()
+    # start = default_timer()
+    # result_one = norm(a)
+    # end = default_timer()
 
-    print(f"Duration (one): {end - start} s")
+    # print(f"Duration (one): {end - start} s")
 
-    a = np.array(a)
-    b = np.array(b)
+    # a = np.array(a)
+    # b = np.array(b)
 
-    start = default_timer()
-    result_two = matrix_add_two(a, b)
-    end = default_timer()
+    # start = default_timer()
+    # result_two = norm_two(a)
+    # end = default_timer()
 
-    print(f"Duration (two): {end - start} s")
+    # print(f"Duration (two): {end - start} s")
 
-    assert result_one == result_two.tolist()
+    # assert result_one == result_two
 
     # start = default_timer()
     # result_two = matrix_multiply_two(a, b)
