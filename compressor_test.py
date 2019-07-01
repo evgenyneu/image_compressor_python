@@ -11,7 +11,7 @@ def test_compress_image():
     os.remove(path_out)
 
 
-@pytest.mark.skip(reason="Long test that creates images at different resolutions")
+# @pytest.mark.skip(reason="Long test that creates images at different resolutions")
 def test_compress_image_color():
     for size in [[100, 100], [500, 500], [750, 375], [1000, 1000]]:
         width = size[0]
@@ -30,7 +30,7 @@ def test_compress_image_color():
                 continue
 
             compression = f"{(1/ratio):0.1f}x_compression"
-            path_out = f"{out_dir}/marmite_{size_test}_compressed_{terms}_terms_{compression}.jpg"
+            path_out = f"{out_dir}/marmite_{size_test}_{terms}_terms_{compression}.jpg"
             compress_image(f"images/marmite_{size_test}.jpg", path_out, terms=terms)
             assert os.path.exists(path_out)
 
