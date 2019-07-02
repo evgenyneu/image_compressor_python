@@ -1,7 +1,7 @@
-from core import load_image, compress_image, iterations_for_terms, compression_ratio, compressed_image_path, dir_filename_extension, image_size, compress_image_to_file
+from core import load_image, compress_image, iterations_for_terms, compression_ratio, \
+    dir_filename_extension, compress_image_to_file, compressed_image_path
 
 import os
-import pytest
 from pytest import approx
 
 
@@ -43,39 +43,6 @@ class TestCompressImage:
 
         assert result['compressed_data'].shape == (100, 100, 3)
         assert result['iterations'] == 7
-
-
-@pytest.mark.skip(reason="Long test that creates compressed images at different resolutions")
-def test_compress_image_color():
-    dirname = 'images/for_compression/'
-    out_subdir = 'images/compressed/'
-    filenames = os.listdir(dirname)
-
-    for filename in filenames:
-        if not filename.endswith(".jpg"):
-            continue
-
-        path = os.path.join(dirname, filename)
-        data = load_image(path)
-        width, height = image_size(data)
-        size_test = f"{width}x{height}"
-
-        for terms in [1, 2, 5, 10, 20, 50, 100, 150, 200, 300, 500]:
-            outdir = os.path.join(out_subdir, size_test)
-
-            if not os.path.exists(outdir):
-                os.makedirs(outdir)
-
-            ratio = compression_ratio(width=width, height=height, terms=terms)
-
-            if ratio > 1.2:
-                continue
-
-            path_out = compressed_image_path(path, width=width, height=height, terms=terms,
-                                             outdir=outdir)
-
-            compress_image(data, path_out=path_out, terms=terms)
-            assert os.path.exists(path_out)
 
 
 def test_compressed_image_path():

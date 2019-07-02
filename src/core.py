@@ -30,7 +30,7 @@ def compress_image_to_file(path, terms, path_out=None):
         {
             'compressed_data': data,
             'iterations': 10,
-            'output_path': '/dir/image.jpg'
+            'output_path': ' /dir/image.jpg'
         }
     """
 
