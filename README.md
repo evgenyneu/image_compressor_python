@@ -46,6 +46,8 @@ images/compressed/100x100/marmite_100x100_20_terms_2.5x_compression.jpg
 
 The code produced the following compressed images:
 
+<img src="images/compressed/500x500/marmite_500x500_1_terms_249.8x_compression.jpg" alt="1 term compression" width="300">
+
 ![1 term compression](images/compressed/500x500/marmite_500x500_1_terms_249.8x_compression.jpg)
 
 ![2 term compression](images/compressed/500x500/marmite_500x500_2_terms_124.9x_compression.jpg)
