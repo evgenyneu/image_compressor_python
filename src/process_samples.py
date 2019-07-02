@@ -4,17 +4,24 @@ in singular value expansion.
 """
 
 import os
+import sys
 import imageio
 from core import load_image, image_size, compression_ratio, compress_image, compressed_image_path
 
 
-def process(silent=False, only_widths=[]):
+def process(dirname, out_subdir, silent=False, only_widths=[]):
     """
-    Compresses sample images of different size using different number of terms in
+    Compresses sample images from `dirname` using different number of terms in
     singular value expansion.
 
     Parameters
     ----------
+    dirname : string
+        Path to directory for the images to process.
+
+    out_subdir : string
+        Path to directory where the compressed images will be created.
+
     silent : bool
         Does not show any output when True.
 
@@ -22,15 +29,16 @@ def process(silent=False, only_widths=[]):
         If the list is not empty, process only images that have given widths.
     """
 
-    dirname = 'images/for_compression/'
-    out_subdir = 'images/compressed/'
     filenames = os.listdir(dirname)
 
     if not silent:
         print("Creating images:")
 
+    supported_extensions = [".jpg", ".jpeg", ".png", ".bmp", ".gif"]
+
     for filename in filenames:
-        if not filename.endswith(".jpg"):
+        _, file_extension = os.path.splitext(filename)
+        if file_extension.lower() not in supported_extensions:
             continue
 
         path = os.path.join(dirname, filename)
@@ -64,3 +72,19 @@ def process(silent=False, only_widths=[]):
 
     if not silent:
         print("Done")
+
+
+def process_with_args(args):
+    if len(args) != 2:
+        print("Incorrect arguments.\n")
+        print("Usage:")
+        print("   $ python src/process_samples.py INPUT_DIR OUTPUT_DIR\n")
+        print("Replace `INPUT_DIR` with the name of directory that contains images you want to compress, in JPG, PNG or BMP format. All images in the directory will be compressed.\n")
+        print("Replace `OUTPUT_DIR` with a name of the directory where you want compressed images to be placed.")
+        return
+
+    process(dirname=args[0], out_subdir=args[1])
+
+
+if __name__ == '__main__':
+    process_with_args(sys.argv[1:])

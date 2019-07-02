@@ -8,6 +8,9 @@ def test_process():
     if os.path.exists(path):
         os.remove(path)
 
-    process(silent=True, only_widths=[100])
+    dirname = 'images/for_compression/'
+    out_subdir = 'images/compressed/'
+
+    process(dirname=dirname, out_subdir=out_subdir, silent=True, only_widths=[100])
 
     assert os.path.exists(path)

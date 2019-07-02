@@ -82,7 +82,7 @@ def compress_image(data, terms, iterations=None):
     if data.ndim == 2:  # Black and white image
         data = np.expand_dims(data, axis=2)
 
-    compressed = np.empty((data.shape[0], data.shape[1], 0))
+    compressed = np.empty((data.shape[0], data.shape[1], 0), dtype=np.uint8)
 
     # Iterate over each of the colors
     for i in range(data.shape[-1]):
@@ -244,5 +244,3 @@ def load_image(path):
     return np.array(imageio.imread(path))
 
 
-if __name__ == '__main__':
-    load_image('images/marmite_500x500_gray.bmp')
