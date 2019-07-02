@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 
-def compress_image_auto_destination(path, terms, path_out=None):
+def compress_image_to_file(path, terms, path_out=None):
     """
     Compresses the image from `path` using singular value expansion.
     The image is saved to an output file which name is chosen automatically,
@@ -21,6 +21,17 @@ def compress_image_auto_destination(path, terms, path_out=None):
 
     terms : int
         The number of terms in the singular value expansion.
+
+    Returns
+    -------
+    dict
+        The dictionary containing compressed data, the number of iteration used,
+        and the output path:
+        {
+            'compressed_data': data,
+            'iterations': 10,
+            'output_path': '/dir/image.jpg'
+        }
     """
 
     data = load_image(path)
@@ -29,8 +40,11 @@ def compress_image_auto_destination(path, terms, path_out=None):
     if path_out is None:
         path_out = compressed_image_path(path, width=width, height=height, terms=terms)
 
-    compress_image(data, path_out=path_out, terms=terms)
-    return path_out
+    result = compress_image(data, terms=terms)
+    compressed_data = result['compressed_data']
+    imageio.imwrite(path_out, compressed_data)
+    result['output_path'] = path_out
+    return result
 
 
 def compress_image(data, terms, iterations=None):
@@ -54,8 +68,12 @@ def compress_image(data, terms, iterations=None):
 
     Returns
     -------
-    numpy.ndarray
-        Data of the compressed image.
+    dict
+        The dictionary containing compressed data and the number of iteration used:
+        {
+            'compressed_data': data,
+            'iterations': 10
+        }
     """
 
     if iterations is None:
@@ -84,9 +102,8 @@ def compress_image(data, terms, iterations=None):
                 'compressed_data': compressed,
                 'iterations': iterations
             }
-    
+
     return result
-    # imageio.imwrite(path_out, compressed)
 
 
 def image_size(data):

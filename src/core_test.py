@@ -1,26 +1,27 @@
-from core import load_image, compress_image, iterations_for_terms, compression_ratio, compressed_image_path, dir_filename_extension, image_size, compress_image_auto_destination
+from core import load_image, compress_image, iterations_for_terms, compression_ratio, compressed_image_path, dir_filename_extension, image_size, compress_image_to_file
 
 import os
 import pytest
 from pytest import approx
 
 
-@pytest.mark.skip(reason="Temp")
-class TestCompressImageAutoPath:
-    def test_compress_image_auto_destination(test):
+class TestCompressImageToFile:
+    def test_compress_image_to_file(test):
         path = "images/for_compression/marmite_100x100.jpg"
-        result = compress_image_auto_destination(path, terms=10)
-        assert result == 'images/for_compression/marmite_100x100_10_terms_5.0x_compression.jpg'
-        assert os.path.exists(result)
-        os.remove(result)
+        result = compress_image_to_file(path, terms=10)
+        output_path = result['output_path']
+        assert output_path == 'images/for_compression/marmite_100x100_10_terms_5.0x_compression.jpg'
+        assert os.path.exists(output_path)
+        os.remove(output_path)
 
-    def test_compress_image_auto_path_specify_path(test):
+    def test_compress_image_to_file_specify_path(test):
         path = "images/for_compression/marmite_100x100.jpg"
         path_out = "images/for_compression/marmite_100x100_test.jpg"
-        result = compress_image_auto_destination(path, path_out=path_out, terms=10)
-        assert result == path_out
-        assert os.path.exists(result)
-        os.remove(result)
+        result = compress_image_to_file(path, path_out=path_out, terms=10)
+        output_path = result['output_path']
+        assert output_path == path_out
+        assert os.path.exists(output_path)
+        os.remove(output_path)
 
 
 class TestCompressImage:
