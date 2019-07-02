@@ -64,6 +64,8 @@ The program produced the following compressed images (see images of other sizes 
 
 ![200 term compression](images/compressed/500x500/marmite_500x500_200_terms_1.2x_compression.jpg)
 
+![200 term compression](images/compressed/1000x1000/marmite_1000x1000_500_terms_1.0x_compression.jpg)
+
 
 ## Run unit tests
 
