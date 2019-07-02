@@ -4,7 +4,36 @@ import numpy as np
 import os
 
 
-def compress_image(data, path, path_out, terms):
+def compress_image_auto_destination(path, terms, path_out=None):
+    """
+    Compresses the image from `path` using singular value expansion.
+    The image is saved to an output file which name is chosen automatically,
+    unless `path_out` is specified.
+
+    Parameters
+    ----------
+    path : path
+        Path to the image to be compressed.
+
+    path_out : string
+        The path where the compressed image will be created.
+        If None, the output name is chosen automatically.
+
+    terms : int
+        The number of terms in the singular value expansion.
+    """
+
+    data = load_image(path)
+    width, height = image_size(data)
+
+    if path_out is None:
+        path_out = compressed_image_path(path, width=width, height=height, terms=terms)
+
+    compress_image(data, path_out=path_out, terms=terms)
+    return path_out
+
+
+def compress_image(data, path_out, terms):
     """
     Compresses the image from `path` using singular value expansion and saves the
     compressed image to `path_out`.
@@ -13,9 +42,6 @@ def compress_image(data, path, path_out, terms):
     ----------
     data : numpy.ndarray
         Image data.
-
-    path : string
-        Path to an image to compress (in JPG, PNG or BPM formats).
 
     path_out : string
         The path where the compressed image will be created.

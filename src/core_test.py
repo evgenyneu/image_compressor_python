@@ -1,8 +1,25 @@
-from core import load_image, compress_image, iterations_for_terms, compression_ratio, compressed_image_path, dir_filename_extension, image_size
+from core import load_image, compress_image, iterations_for_terms, compression_ratio, compressed_image_path, dir_filename_extension, image_size, compress_image_auto_destination
 
 import os
 import pytest
 from pytest import approx
+
+
+class TestCompressImageAutoPath:
+    def test_compress_image_auto_destination(test):
+        path = "images/for_compression/marmite_100x100.jpg"
+        result = compress_image_auto_destination(path, terms=10)
+        assert result == 'images/for_compression/marmite_100x100_10_terms_5.0x_compression.jpg'
+        assert os.path.exists(result)
+        os.remove(result)
+
+    def test_compress_image_auto_path_specify_path(test):
+        path = "images/for_compression/marmite_100x100.jpg"
+        path_out = "images/for_compression/marmite_100x100_test.jpg"
+        result = compress_image_auto_destination(path, path_out=path_out, terms=10)
+        assert result == path_out
+        assert os.path.exists(result)
+        os.remove(result)
 
 
 def test_compress_image():
@@ -10,7 +27,7 @@ def test_compress_image():
     data = load_image(path)
     width, height = image_size(data)
     path_out = compressed_image_path(path, width=width, height=height, terms=10)
-    compress_image(data, path=path, path_out=path_out, terms=10)
+    compress_image(data, path_out=path_out, terms=10)
     assert os.path.exists(path_out)
     os.remove(path_out)
 
@@ -44,7 +61,7 @@ def test_compress_image_color():
             path_out = compressed_image_path(path, width=width, height=height, terms=terms,
                                              outdir=outdir)
 
-            compress_image(data, path=path, path_out=path_out, terms=terms)
+            compress_image(data, path_out=path_out, terms=terms)
             assert os.path.exists(path_out)
 
 
