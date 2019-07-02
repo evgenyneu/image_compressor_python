@@ -48,6 +48,10 @@ The code produced the following compressed images:
 
 ![1 term compression](images/compressed/500x500/marmite_500x500_1_terms_249.8x_compression.jpg)
 
+![2 term compression](images/compressed/500x500/marmite_500x500_2_terms_124.9x_compression.jpg)
+
+![5 term compression](images/compressed/500x500/marmite_500x500_5_terms_50.0x_compression.jpg)
+
 
 ## Run unit tests
 
