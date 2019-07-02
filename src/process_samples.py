@@ -7,6 +7,7 @@ import os
 import sys
 import imageio
 from core import load_image, image_size, compression_ratio, compress_image, compressed_image_path
+from annotate import annotate
 
 
 def process(dirname, out_subdir, silent=False, only_widths=[]):
@@ -70,6 +71,14 @@ def process(dirname, out_subdir, silent=False, only_widths=[]):
             compressed_data = result['compressed_data']
             imageio.imwrite(path_out, compressed_data)
 
+            if width < 200:
+                fontsize = int(width / 10)
+            else:
+                fontsize = int(width / 20)
+
+            compresion_x = round(1/ratio, 1)
+            annotate(path=path_out, terms=terms, compression=compresion_x, fontsize=fontsize)
+
     if not silent:
         print("Done")
 
@@ -79,8 +88,11 @@ def process_with_args(args):
         print("Incorrect arguments.\n")
         print("Usage:")
         print("   $ python src/process_samples.py INPUT_DIR OUTPUT_DIR\n")
-        print("Replace `INPUT_DIR` with the name of directory that contains images you want to compress, in JPG, PNG or BMP format. All images in the directory will be compressed.\n")
-        print("Replace `OUTPUT_DIR` with a name of the directory where you want compressed images to be placed.")
+        print("Replace `INPUT_DIR` with the name of directory \
+            that contains images you want to compress, in JPG, PNG or BMP format. \
+            All images in the directory will be compressed.\n")
+        print("Replace `OUTPUT_DIR` with a name of the directory where you want \
+            compressed images to be placed.")
         return
 
     process(dirname=args[0], out_subdir=args[1])

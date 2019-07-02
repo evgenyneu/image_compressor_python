@@ -6,7 +6,7 @@ from pytest import approx
 
 
 class TestCompressImageToFile:
-    def test_compress_image_to_file(test):
+    def test_compress_image_to_file(self):
         path = "images/for_compression/marmite_100x100.jpg"
         result = compress_image_to_file(path, terms=10)
         output_path = result['output_path']
@@ -14,7 +14,7 @@ class TestCompressImageToFile:
         assert os.path.exists(output_path)
         os.remove(output_path)
 
-    def test_compress_image_to_file_specify_path(test):
+    def test_compress_image_to_file_specify_path(self):
         path = "images/for_compression/marmite_100x100.jpg"
         path_out = "images/for_compression/marmite_100x100_test.jpg"
         result = compress_image_to_file(path, path_out=path_out, terms=10)
