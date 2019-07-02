@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 
-def compress_image(data, path, terms, outdir=None):
+def compress_image(data, path, path_out, terms):
     """
     Compresses the image from `path` using singular value expansion and saves the
     compressed image to `path_out`.
@@ -17,22 +17,14 @@ def compress_image(data, path, terms, outdir=None):
     path : string
         Path to an image to compress (in JPG, PNG or BPM formats).
 
+    path_out : string
+        The path where the compressed image will be created.
+
     terms : int
         The number of terms in the singular value expansion.
-
-    outdir : string
-        The directory where the output image is created.
-        If none, the directory of the source image is used.
-
-    Returns
-    -------
-    string
-        Path to the compressed image.
     """
 
     iterations = iterations_for_terms(terms)
-    width, height = image_size(data)
-    path_out = compressed_image_path(path, width=width, height=height, terms=terms, outdir=outdir)
 
     if data.ndim == 2:  # Black and white image
         data = np.expand_dims(data, axis=2)
@@ -54,8 +46,6 @@ def compress_image(data, path, terms, outdir=None):
         compressed = np.append(compressed, compressed_data, axis=2)
 
     imageio.imwrite(path_out, compressed)
-
-    return path_out
 
 
 def image_size(data):

@@ -5,6 +5,49 @@ import pytest
 from pytest import approx
 
 
+def test_compress_image():
+    path = "images/for_compression/marmite_100x100.jpg"
+    data = load_image(path)
+    width, height = image_size(data)
+    path_out = compressed_image_path(path, width=width, height=height, terms=10)
+    compress_image(data, path=path, path_out=path_out, terms=10)
+    assert os.path.exists(path_out)
+    os.remove(path_out)
+
+
+@pytest.mark.skip(reason="Long test that creates compressed images at different resolutions")
+def test_compress_image_color():
+    dirname = 'images/for_compression/'
+    out_subdir = 'images/compressed/'
+    filenames = os.listdir(dirname)
+
+    for filename in filenames:
+        if not filename.endswith(".jpg"):
+            continue
+
+        path = os.path.join(dirname, filename)
+        data = load_image(path)
+        width, height = image_size(data)
+        size_test = f"{width}x{height}"
+
+        for terms in [1, 2, 5, 10, 20, 50, 100, 150, 200, 300, 500]:
+            outdir = os.path.join(out_subdir, size_test)
+
+            if not os.path.exists(outdir):
+                os.makedirs(outdir)
+
+            ratio = compression_ratio(width=width, height=height, terms=terms)
+
+            if ratio > 1.2:
+                continue
+
+            path_out = compressed_image_path(path, width=width, height=height, terms=terms,
+                                             outdir=outdir)
+
+            compress_image(data, path=path, path_out=path_out, terms=terms)
+            assert os.path.exists(path_out)
+
+
 def test_compressed_image_path():
     path = "/dir/images/marmite_750x375.jpg"
     result = compressed_image_path(path, width=750, height=150, terms=8)
@@ -19,42 +62,6 @@ def test_dir_filename_extension():
     assert dirname == "/dir/dir2"
     assert filename_without_extension == "my.cat"
     assert file_extension == ".jpg"
-
-
-def test_compress_image():
-    path = "images/for_compression/marmite_750x375.jpg"
-    data = load_image(path)
-    result = compress_image(data, path=path, terms=10)
-    assert result == 'images/for_compression/marmite_750x375_10_terms_25.0x_compression.jpg'
-    assert os.path.exists(result)
-    os.remove(result)
-
-
-@pytest.mark.skip(reason="Long test that creates images at different resolutions")
-def test_compress_image_color():
-    dirname = 'images/for_compression/'
-    outdir = 'images/compressed/'
-    filenames = os.listdir(dirname)
-
-    for filename in filenames:
-        path = os.path.join(dirname, filename)
-        data = load_image(path)
-        width, height = image_size(data)
-        size_test = f"{width}x{height}"
-
-        for terms in [1, 2, 5, 10, 20, 50, 100, 150, 200, 300, 500]:
-            out_dir_with_size = os.path.join(outdir, size_test)
-
-            if not os.path.exists(out_dir_with_size):
-                os.makedirs(out_dir_with_size)
-
-            ratio = compression_ratio(width=width, height=height, terms=terms)
-
-            if ratio > 1.2:
-                continue
-
-            path_out = compress_image(data, path=path, terms=terms, outdir=out_dir_with_size)
-            assert os.path.exists(path_out)
 
 
 def test_compression_ratio():
