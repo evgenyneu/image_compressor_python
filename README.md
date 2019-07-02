@@ -44,7 +44,9 @@ images/compressed/100x100/marmite_100x100_10_terms_5.0x_compression.jpg
 images/compressed/100x100/marmite_100x100_20_terms_2.5x_compression.jpg
 ```
 
-The program produced the following compressed images (see images of other sizes [here](images/compressed)):
+## Compression results
+
+The program produced the following compressed images featuring my cat Marmite. The images of other sizes are located [here](images/compressed).
 
 ![1 term compression](images/compressed/1000x1000/marmite_1000x1000_1_terms_499.8x_compression.jpg)
 
