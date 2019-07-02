@@ -1,9 +1,27 @@
+"""
+Compresses sample images of different size using different number of terms
+in singular value expansion.
+"""
+
 import os
 import imageio
 from core import load_image, image_size, compression_ratio, compress_image, compressed_image_path
 
 
 def process(silent=False, only_widths=[]):
+    """
+    Compresses sample images of different size using different number of terms in
+    singular value expansion.
+
+    Parameters
+    ----------
+    silent : bool
+        Does not show any output when True.
+
+    only_widths : list of int
+        If the list is not empty, process only images that have given widths.
+    """
+
     dirname = 'images/for_compression/'
     out_subdir = 'images/compressed/'
     filenames = os.listdir(dirname)
