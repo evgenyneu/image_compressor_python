@@ -44,6 +44,10 @@ images/compressed/100x100/marmite_100x100_10_terms_5.0x_compression.jpg
 images/compressed/100x100/marmite_100x100_20_terms_2.5x_compression.jpg
 ```
 
+The code produced the following compressed images:
+
+[1 term compression](images/compressed/500x500/marmite_500x500_1_terms_249.8x_compression.jpg)
+
 
 ## Run unit tests
 
