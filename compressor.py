@@ -1,11 +1,38 @@
 import imageio
 from svd import svd, singular_value_expansion
 import numpy as np
+import os
 
 
-def compress_image(path, path_out, terms):
+def compress_image(data, path, terms, outdir=None):
+    """
+    Compresses the image from `path` using singular value expansion and saves the
+    compressed image to `path_out`.
+
+    Parameters
+    ----------
+    data : numpy.ndarray
+        Image data.
+
+    path : string
+        Path to an image to compress (in JPG, PNG or BPM formats).
+
+    terms : int
+        The number of terms in the singular value expansion.
+
+    outdir : string
+        The directory where the output image is created.
+        If none, the directory of the source image is used.
+
+    Returns
+    -------
+    string
+        Path to the compressed image.
+    """
+
     iterations = iterations_for_terms(terms)
-    data = load_image(path)
+    width, height = image_size(data)
+    path_out = compressed_image_path(path, width=width, height=height, terms=terms, outdir=outdir)
 
     if data.ndim == 2:  # Black and white image
         data = np.expand_dims(data, axis=2)
@@ -27,6 +54,78 @@ def compress_image(path, path_out, terms):
         compressed = np.append(compressed, compressed_data, axis=2)
 
     imageio.imwrite(path_out, compressed)
+
+    return path_out
+
+
+def image_size(data):
+    """
+    Parameters
+    ----------
+    data : numpy.ndarray
+        Image data.
+
+    Returns
+    -------
+    tuple (int, int)
+        Image width and height.
+    """
+
+    image_shape = data.shape
+    return (image_shape[0], image_shape[1])
+
+
+def compressed_image_path(path, width, height, terms, outdir=None):
+    """
+    Parameters
+    ----------
+    path: string
+        Path to the uncompressed image.
+
+    width : int
+        Width of the image in pixels.
+
+    height : int
+        Width of the image in pixels.
+
+    terms : int
+        The number of terms in the singular value expansion.
+
+    Returns
+    -------
+    string
+        Path to the compressed image.
+    """
+
+    ratio = compression_ratio(width=width, height=height, terms=terms)
+    compression = f"{(1/ratio):0.1f}x_compression"
+    terms_text = f"{terms}_terms"
+    dirname, filename_without_extension, file_extension = dir_filename_extension(path)
+
+    if outdir is None:
+        outdir = dirname
+
+    return f"{outdir}/{filename_without_extension}_{terms_text}_{compression}{file_extension}"
+
+
+def dir_filename_extension(path):
+    """
+    Parameters
+    ----------
+    path : string
+        Path to a file.
+
+    Returns
+    -------
+    tuple of string (string, string, string)
+        The base dir, file name without extension and extension.
+    """
+
+    filename, file_extension = os.path.splitext(path)
+    dirname = os.path.dirname(filename)
+    filename_without_extension = os.path.basename(filename)
+
+    return (dirname, filename_without_extension, file_extension)
 
 
 def compression_ratio(width, height, terms):

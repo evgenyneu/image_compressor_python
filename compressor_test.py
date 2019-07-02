@@ -1,37 +1,59 @@
-from compressor import load_image, compress_image, iterations_for_terms, compression_ratio
+from compressor import load_image, compress_image, iterations_for_terms, compression_ratio, compressed_image_path, dir_filename_extension, image_size
+
 import os
 import pytest
 from pytest import approx
 
 
+def test_compressed_image_path():
+    path = "/dir/images/marmite_750x375.jpg"
+    result = compressed_image_path(path, width=750, height=150, terms=8)
+
+    assert result == "/dir/images/marmite_750x375_8_terms_15.6x_compression.jpg"
+
+
+def test_dir_filename_extension():
+    path = "/dir/dir2/my.cat.jpg"
+    dirname, filename_without_extension, file_extension = dir_filename_extension(path)
+
+    assert dirname == "/dir/dir2"
+    assert filename_without_extension == "my.cat"
+    assert file_extension == ".jpg"
+
+
 def test_compress_image():
-    path_out = f"images/marmite_750x375_test.bmp"
-    compress_image("images/marmite_750x375.jpg", path_out, terms=10)
-    assert os.path.exists(path_out)
-    os.remove(path_out)
+    path = "images/for_compression/marmite_750x375.jpg"
+    data = load_image(path)
+    result = compress_image(data, path=path, terms=10)
+    assert result == 'images/for_compression/marmite_750x375_10_terms_25.0x_compression.jpg'
+    assert os.path.exists(result)
+    os.remove(result)
 
 
 @pytest.mark.skip(reason="Long test that creates images at different resolutions")
 def test_compress_image_color():
-    for size in [[100, 100], [500, 500], [750, 375], [1000, 1000]]:
-        width = size[0]
-        height = size[1]
+    dirname = 'images/for_compression/'
+    outdir = 'images/compressed/'
+    filenames = os.listdir(dirname)
+
+    for filename in filenames:
+        path = os.path.join(dirname, filename)
+        data = load_image(path)
+        width, height = image_size(data)
         size_test = f"{width}x{height}"
 
         for terms in [1, 2, 5, 10, 20, 50, 100, 150, 200, 300, 500]:
-            out_dir = f"images/{size_test}"
+            out_dir_with_size = os.path.join(outdir, size_test)
 
-            if not os.path.exists(out_dir):
-                os.makedirs(out_dir)
+            if not os.path.exists(out_dir_with_size):
+                os.makedirs(out_dir_with_size)
 
             ratio = compression_ratio(width=width, height=height, terms=terms)
 
             if ratio > 1.2:
                 continue
 
-            compression = f"{(1/ratio):0.1f}x_compression"
-            path_out = f"{out_dir}/marmite_{size_test}_{terms}_terms_{compression}.jpg"
-            compress_image(f"images/marmite_{size_test}.jpg", path_out, terms=terms)
+            path_out = compress_image(data, path=path, terms=terms, outdir=out_dir_with_size)
             assert os.path.exists(path_out)
 
 
