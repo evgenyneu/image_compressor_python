@@ -33,4 +33,8 @@ def annotate(path, terms, compression, fontsize):
         -strokewidth 2 -annotate +0+{margin} '{message}' \
         -stroke none -fill white -annotate +0+{margin} '{message}'"
 
-    os.system(f"convert {path} {annotation} {path}")
+    result = os.system(f"convert {path} {annotation} {path}")
+
+    if result != 0:
+        # Error calling convert
+        print("Could not call `convert` program to annotate the image. Please install Image Magic if you need annotations.")
