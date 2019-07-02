@@ -46,13 +46,23 @@ images/compressed/100x100/marmite_100x100_20_terms_2.5x_compression.jpg
 
 The code produced the following compressed images:
 
-<img src="images/compressed/500x500/marmite_500x500_1_terms_249.8x_compression.jpg" alt="1 term compression" width="300">
-
 ![1 term compression](images/compressed/500x500/marmite_500x500_1_terms_249.8x_compression.jpg)
 
 ![2 term compression](images/compressed/500x500/marmite_500x500_2_terms_124.9x_compression.jpg)
 
 ![5 term compression](images/compressed/500x500/marmite_500x500_5_terms_50.0x_compression.jpg)
+
+![10 term compression](images/compressed/500x500/marmite_500x500_10_terms_25.0x_compression.jpg)
+
+![20 term compression](images/compressed/500x500/marmite_500x500_20_terms_12.5x_compression.jpg)
+
+![50 term compression](images/compressed/500x500/marmite_500x500_50_terms_5.0x_compression.jpg)
+
+![100 term compression](images/compressed/500x500/marmite_500x500_100_terms_2.5x_compression.jpg)
+
+![150 term compression](images/compressed/500x500/marmite_500x500_150_terms_1.7x_compression.jpg)
+
+![200 term compression](images/compressed/500x500/marmite_500x500_200_terms_1.2x_compression.jpg)
 
 
 ## Run unit tests
