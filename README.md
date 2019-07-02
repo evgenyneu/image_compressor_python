@@ -16,7 +16,7 @@ pip install imageio
 
 ### Compress all images in a directory
 
-This following program allows to compress many images using multiple number of terms in singular value expansion. This can be useful for comparing many different compression settings instead compressing an image with a single setting.
+This following program allows to compress many images with different quality, which is controlled by the `terms` setting. This can be useful for comparing many different outcomes and see how the `terms` setting affects image quality.
 
 Run from the project directory:
 
