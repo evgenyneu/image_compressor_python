@@ -33,10 +33,9 @@ def compress_image_auto_destination(path, terms, path_out=None):
     return path_out
 
 
-def compress_image(data, path_out, terms):
+def compress_image(data, terms, iterations=None):
     """
-    Compresses the image from `path` using singular value expansion and saves the
-    compressed image to `path_out`.
+    Compresses the image from `path` using singular value expansion.
 
     Parameters
     ----------
@@ -48,9 +47,19 @@ def compress_image(data, path_out, terms):
 
     terms : int
         The number of terms in the singular value expansion.
+
+    iterations : int
+        Number of terms in the singular value expansion.
+        If None, the number is chosen automatically.
+
+    Returns
+    -------
+    numpy.ndarray
+        Data of the compressed image.
     """
 
-    iterations = iterations_for_terms(terms)
+    if iterations is None:
+        iterations = iterations_for_terms(terms)
 
     if data.ndim == 2:  # Black and white image
         data = np.expand_dims(data, axis=2)
@@ -71,7 +80,13 @@ def compress_image(data, path_out, terms):
         compressed_data = np.expand_dims(compressed_data, axis=2)
         compressed = np.append(compressed, compressed_data, axis=2)
 
-    imageio.imwrite(path_out, compressed)
+    result = {
+                'compressed_data': compressed,
+                'iterations': iterations
+            }
+    
+    return result
+    # imageio.imwrite(path_out, compressed)
 
 
 def image_size(data):
