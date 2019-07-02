@@ -46,7 +46,7 @@ images/compressed/100x100/marmite_100x100_20_terms_2.5x_compression.jpg
 
 ## Compression results
 
-The program produced the following compressed images featuring my cat Marmite. The images of other sizes are located [here](images/compressed).
+The program produced the following compressed images featuring my cat Marmite. The image size are 1000 by 1000 pixels. The compression results for images of different sizes are located [here](images/compressed).
 
 ![1 term compression](images/compressed/1000x1000/marmite_1000x1000_1_terms_499.8x_compression.jpg)
 
@@ -69,6 +69,11 @@ The program produced the following compressed images featuring my cat Marmite. T
 ![300 term compression](images/compressed/1000x1000/marmite_1000x1000_300_terms_1.7x_compression.jpg)
 
 ![500 term compression](images/compressed/1000x1000/marmite_1000x1000_500_terms_1.0x_compression.jpg)
+
+### Original uncompressed image
+
+![Uncompressed image](images/for_compression/marmite_1000x1000.jpg)
+
 
 
 ## Run unit tests
