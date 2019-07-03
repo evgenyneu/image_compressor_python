@@ -11,7 +11,7 @@ pip install numpy
 pip install imageio
 ```
 
-Download the source code:
+Download this source code:
 
 ```
 git clone https://github.com/evgenyneu/image_compressor_python.git
