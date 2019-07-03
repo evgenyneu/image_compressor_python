@@ -20,12 +20,6 @@ def parse_cmd_args(args):
     parser.add_argument('--output', help='path to the compressed image that will be created')
 
     parser.add_argument(
-        '--notext',
-        dest="annotate",
-        action='store_false',
-        help='do not put text on the image')
-
-    parser.add_argument(
         '--terms',
         type=int,
         help='number of terms in the singular value expansion')
@@ -34,5 +28,11 @@ def parse_cmd_args(args):
         '--iterations',
         type=int,
         help='number of iterations of the power method')
+
+    parser.add_argument(
+        '--notext',
+        dest="annotate",
+        action='store_false',
+        help='do not put text on the image')
 
     return parser.parse_args(args)

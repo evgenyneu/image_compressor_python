@@ -26,10 +26,10 @@ python src/compress.py image.jpg --terms=10
 ```
   -h, --help            show this help message and exit
   --output OUTPUT       path to the compressed image that will be created
-  --notext              do not put text on the image
   --terms TERMS         number of terms in the singular value expansion
   --iterations ITERATIONS
                         number of iterations of the power method
+  --notext              do not put text on the image
 ```
 
 ### Compress all images in a directory
