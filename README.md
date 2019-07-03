@@ -24,12 +24,23 @@ python src/compress.py image.jpg --terms=10
 
 
 ```
+$ python src/compress.py -h
+usage: python compress.py [-h] [--output OUTPUT] [--notext] [--terms TERMS]
+                          [--iterations ITERATIONS]
+                          IMAGE
+
+compress an image using singular value decomposition.
+
+positional arguments:
+  IMAGE                 path to the image to compress
+
+optional arguments:
   -h, --help            show this help message and exit
-  --output OUTPUT       Path to the compressed image that will be created
-  --notext              Do not put text on the image.
-  --terms TERMS         Number of terms in the singular value expansion.
+  --output OUTPUT       path to the compressed image that will be created
+  --notext              do not put text on the image
+  --terms TERMS         number of terms in the singular value expansion
   --iterations ITERATIONS
-                        Number of iterations of the power method.
+                        number of iterations of the power method
 ```
 
 ### Compress all images in a directory
