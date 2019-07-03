@@ -23,8 +23,12 @@ cd image_compressor_python
 Compress an image file `image.jpg` using ten terms of the singular value expansion:
 
 ```
-python src/compress.py image.jpg --terms=10
+python src/compress.py marmite.jpg --terms=10
 ```
+
+It creates the following image
+
+![Singular value expansion compression with 10 terms](marmite_10_terms_25.0x_compression.jpg)
 
 
 ### Available options
