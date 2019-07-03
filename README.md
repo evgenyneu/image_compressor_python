@@ -1,6 +1,6 @@
 # A Python image compression program
 
-This a Python program I wrote for fun to apply linear algebra theory I learned in Monash uni. The code uses singular value expansion method to reduce the size of an image.
+This is a Python program I wrote for fun to apply linear algebra theory I learned in Monash uni. The code uses singular value expansion method to reduce the size of an image.
 
 ## Setup
 
