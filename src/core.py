@@ -26,11 +26,12 @@ def compress_image_to_file(path, terms, path_out=None):
     -------
     dict
         The dictionary containing compressed data, the number of iteration used,
-        and the output path:
+        the output path and compression ratio:
         {
             'compressed_data': data,
             'iterations': 10,
-            'output_path': ' /dir/image.jpg'
+            'output_path': ' /dir/image.jpg',
+            'compression_ratio': 5.7
         }
     """
 
@@ -43,6 +44,8 @@ def compress_image_to_file(path, terms, path_out=None):
     result = compress_image(data, terms=terms)
     compressed_data = result['compressed_data']
     imageio.imwrite(path_out, compressed_data)
+    ratio = compression_ratio(width=width, height=height, terms=terms)
+    result['compression_ratio'] = round(1/ratio, 1)
     result['output_path'] = path_out
     return result
 
