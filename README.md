@@ -4,7 +4,7 @@ This is a Python program I wrote for fun to apply linear algebra theory I learne
 
 ## Setup
 
-Install the dependencies:
+First, [install Python](https://www.python.org/downloads/). Next, install dependencies:
 
 ```
 pip install numpy
