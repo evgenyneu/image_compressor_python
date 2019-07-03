@@ -47,7 +47,7 @@ Replace `OUTPUT_DIR` with a name of the directory where you want compressed imag
 
 #### Example
 
-This example uses the images of my cat Marmite from images/for_compression directory:
+This example uses the images from `images/for_compression` directory:
 
 ```
 $ python src/process_samples.py images/for_compression images/compressed/
