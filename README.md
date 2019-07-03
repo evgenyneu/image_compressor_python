@@ -45,7 +45,7 @@ Replace `INPUT_DIR` with the name of directory that contains images you want to 
 Replace `OUTPUT_DIR` with a name of the directory where you want compressed images to be placed.
 
 
-##### Example
+#### Example
 
 This example uses the images of my cat Marmite from images/for_compression directory:
 
