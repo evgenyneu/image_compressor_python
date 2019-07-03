@@ -5,7 +5,8 @@ import os
 def test_compress():
     path = "images/for_compression/marmite_100x100.jpg"
 
-    result = compress(path=path, path_out=None, terms=None, annotate=False, silent=False)
+    result = compress(path=path, path_out=None,
+                      terms=None, iterations=None, annotate=False, silent=True)
 
     output_path = result['output_path']
     assert output_path == 'images/for_compression/marmite_100x100_10_terms_5.0x_compression.jpg'

@@ -2,6 +2,15 @@ import argparse
 
 
 def parse_cmd_args(args):
+    """
+    Parses command line arguments
+
+    Returns
+    -------
+    argparse.Namespace
+        Object containing the values of command line options.
+    """
+
     parser = argparse.ArgumentParser(
         prog="python compress.py",
         description="Compress an image using singular value decomposition.")
@@ -20,5 +29,10 @@ def parse_cmd_args(args):
         '--terms',
         type=int,
         help='Number of terms in the singular value expansion.')
+
+    parser.add_argument(
+        '--iterations',
+        type=int,
+        help='Number of iterations of the power method.')
 
     return parser.parse_args(args)

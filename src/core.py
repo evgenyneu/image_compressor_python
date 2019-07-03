@@ -5,7 +5,7 @@ import numpy as np
 import os
 
 
-def compress_image_to_file(path, terms, annotate, path_out=None):
+def compress_image_to_file(path, terms, annotate, iterations=None, path_out=None):
     """
     Compresses the image from `path` using singular value expansion.
     The image is saved to an output file which name is chosen automatically,
@@ -22,6 +22,10 @@ def compress_image_to_file(path, terms, annotate, path_out=None):
 
     terms : int
         The number of terms in the singular value expansion.
+
+    iterations : int
+        The number of iterations of the power method.
+        If None, the optimal number is determined automatically.
 
     annotate : bool
         If True, a text is added on top of the image,
@@ -46,7 +50,7 @@ def compress_image_to_file(path, terms, annotate, path_out=None):
     if path_out is None:
         path_out = compressed_image_path(path, width=width, height=height, terms=terms)
 
-    result = compress_image(data, terms=terms)
+    result = compress_image(data, terms=terms, iterations=iterations)
     compressed_data = result['compressed_data']
     imageio.imwrite(path_out, compressed_data)
     ratio = compression_ratio(width=width, height=height, terms=terms)
