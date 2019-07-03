@@ -24,17 +24,6 @@ python src/compress.py image.jpg --terms=10
 
 
 ```
-$ python src/compress.py -h
-usage: python compress.py [-h] [--output OUTPUT] [--notext] [--terms TERMS]
-                          [--iterations ITERATIONS]
-                          IMAGE
-
-compress an image using singular value decomposition.
-
-positional arguments:
-  IMAGE                 path to the image to compress
-
-optional arguments:
   -h, --help            show this help message and exit
   --output OUTPUT       path to the compressed image that will be created
   --notext              do not put text on the image
