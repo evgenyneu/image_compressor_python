@@ -55,11 +55,11 @@ def annotate_from_width(path, terms, width, ratio):
     ratio : float
         The fraction of the compressed image data size relative to uncompressed.
     """
-    
+
     if width < 200:
         fontsize = int(width / 10)
     else:
-        fontsize = int(width / 20)
+        fontsize = int(width / 15)
 
     compresion_x = round(1/ratio, 1)
     annotate(path=path, terms=terms, compression=compresion_x, fontsize=fontsize)

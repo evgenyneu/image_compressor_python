@@ -70,7 +70,7 @@ def process(dirname, out_subdir, silent=False, only_widths=[]):
             result = compress_image(data, terms=terms)
             compressed_data = result['compressed_data']
             imageio.imwrite(path_out, compressed_data)
-            # annotate_from_width(path=path_out, terms=terms, width=width, ratio=ratio)
+            annotate_from_width(path=path_out, terms=terms, width=width, ratio=ratio)
 
     if not silent:
         print("Done")

@@ -106,6 +106,11 @@ def compress_image(data, terms, iterations=None):
 
         # Compress the data for the color
         svd_data = svd(matrix=color_data, max_eigenvalues=terms, iterations=iterations)
+
+        if len(svd_data) == 0:
+            # Could not calculate SVD (dominant eigenvalue was zero)
+            break
+
         compressed_data = singular_value_expansion(svd_data)
 
         # Convert data values to integers in range between 0 and 254 (brightness)

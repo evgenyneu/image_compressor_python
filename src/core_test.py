@@ -41,6 +41,13 @@ class TestCompressImage:
         assert result['compressed_data'].shape == (100, 100, 3)
         assert result['iterations'] == 7
 
+    def test_compress_image_that_crashed(self):
+        data = load_image("images/none_type_test.png")
+
+        result = compress_image(data, terms=3)
+
+        assert result['compressed_data'].shape == (256, 302, 3)
+
 
 class TestCompressImagePath:
     def test_compressed_image_path(self):

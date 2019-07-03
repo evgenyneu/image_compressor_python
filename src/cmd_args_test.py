@@ -3,7 +3,6 @@ from cmd_args import parse_cmd_args
 
 def test_parse_cmd_args():
     result = parse_cmd_args(['hello'])
-    print(type(result))
     assert result.IMAGE == 'hello'
     assert result.output is None
     assert result.annotate
