@@ -13,6 +13,24 @@ pip install imageio
 
 ## Usage
 
+Run the command from a terminal, to compress an `image.jpg` file using ten terms in singular value expansion.
+
+```
+python src/compress.py image.jpg --terms=10
+```
+
+
+### Available options
+
+
+```
+  -h, --help            show this help message and exit
+  --output OUTPUT       Path to the compressed image that will be created
+  --notext              Do not put text on the image.
+  --terms TERMS         Number of terms in the singular value expansion.
+  --iterations ITERATIONS
+                        Number of iterations of the power method.
+```
 
 ### Compress all images in a directory
 
