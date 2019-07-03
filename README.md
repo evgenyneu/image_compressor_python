@@ -34,9 +34,7 @@ python src/compress.py image.jpg --terms=10
 
 ### Compress all images in a directory
 
-This following program allows to compress many images with different quality all at once. This can be useful for comparing many different outcomes and see how the `terms` setting affects image quality.
-
-Run from the project directory:
+This following program allows to compress many images with different quality all at once. This can be useful for comparing many different outcomes and see how the `terms` setting affects image quality:
 
 ```
 $ python src/process_samples.py INPUT_DIR OUTPUT_DIR
