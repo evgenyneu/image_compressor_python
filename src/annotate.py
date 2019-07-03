@@ -33,7 +33,7 @@ def annotate(path, terms, compression, fontsize):
         -strokewidth 2 -annotate +0+{margin} '{message}' \
         -stroke none -fill white -annotate +0+{margin} '{message}'"
 
-    result = os.system(f"convert {path} {annotation} {path}")
+    result = os.system(f"convert '{path}' {annotation} '{path}'")
 
     if result != 0:
         # Error calling convert
