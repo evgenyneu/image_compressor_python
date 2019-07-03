@@ -11,6 +11,12 @@ pip install numpy
 pip install imageio
 ```
 
+Download the source code:
+
+```
+git clone https://github.com/evgenyneu/image_compressor_python.git
+```
+
 ## Usage
 
 Compress an image file `image.jpg` using ten terms of the singular value expansion:
