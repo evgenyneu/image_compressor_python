@@ -58,8 +58,10 @@ def annotate_from_width(path, terms, width, ratio):
 
     if width < 200:
         fontsize = int(width / 10)
-    else:
+    elif width < 800:
         fontsize = int(width / 15)
+    else:
+        fontsize = int(width / 20)
 
     compresion_x = round(1/ratio, 1)
     annotate(path=path, terms=terms, compression=compresion_x, fontsize=fontsize)
