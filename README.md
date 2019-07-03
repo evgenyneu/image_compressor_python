@@ -26,9 +26,11 @@ Compress an image file `image.jpg` using ten terms of the singular value expansi
 python src/compress.py marmite.jpg --terms=10
 ```
 
-It creates the following image
+It creates an image named `marmite_10_terms_25.0x_compression.jpg` that looks like this:
 
 ![Singular value expansion compression with 10 terms](marmite_10_terms_25.0x_compression.jpg)
+
+You can experiment with the `--terms` option and see how it affects the image quality and compression ratio.
 
 
 ### Available options
