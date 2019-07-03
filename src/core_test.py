@@ -6,36 +6,32 @@ from pytest import approx
 
 
 class TestCompressImageToFile:
+    def test_compress_image_to_file_specify_path(self):
+        path = "images/for_compression/marmite_100x100.jpg"
+        path_out = "images/for_compression/marmite_100x100_test.jpg"
+        result = compress_image_to_file(path, path_out=path_out, terms=10, annotate=True)
+        output_path = result['output_path']
+        assert output_path == path_out
+        assert os.path.exists(output_path)
+        os.remove(output_path)
+
     def test_compress_image_to_file(self):
         path = "images/for_compression/marmite_100x100.jpg"
-        result = compress_image_to_file(path, terms=10)
+        result = compress_image_to_file(path, terms=10, annotate=True)
         output_path = result['output_path']
         assert output_path == 'images/for_compression/marmite_100x100_10_terms_5.0x_compression.jpg'
         assert os.path.exists(output_path)
         assert result['compression_ratio'] == 5
         os.remove(output_path)
 
-    def test_compress_image_to_file_specify_path(self):
-        path = "images/for_compression/marmite_100x100.jpg"
-        path_out = "images/for_compression/marmite_100x100_test.jpg"
-        result = compress_image_to_file(path, path_out=path_out, terms=10)
-        output_path = result['output_path']
-        assert output_path == path_out
-        assert os.path.exists(output_path)
-        os.remove(output_path)
-
 
 class TestCompressImage:
     def test_compress_image(self):
         data = load_image("images/for_compression/marmite_100x100.jpg")
-        # width, height = image_size(data)
-        # path_out = compressed_image_path(path, width=width, height=height, terms=10)
         result = compress_image(data, terms=10)
 
         assert result['compressed_data'].shape == (100, 100, 3)
         assert result['iterations'] == 10
-        # assert os.path.exists(path_out)
-        # os.remove(path_out)
 
     def test_compress_image_supply_iterations(self):
         data = load_image("images/for_compression/marmite_100x100.jpg")

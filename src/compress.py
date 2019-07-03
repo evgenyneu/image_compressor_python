@@ -12,7 +12,8 @@ def compress(path, path_out, terms, annotate, silent):
     if not silent:
         print(f"Compressing image...")
 
-    result = compress_image_to_file(path=path, terms=terms, path_out=path_out)
+    result = compress_image_to_file(path=path, terms=terms, path_out=path_out,
+                                    annotate=annotate)
 
     output_path = result['output_path']
 

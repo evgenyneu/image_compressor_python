@@ -7,7 +7,7 @@ import os
 import sys
 import imageio
 from core import load_image, image_size, compression_ratio, compress_image, compressed_image_path
-from annotate import annotate
+from annotate import annotate_from_width
 
 
 def process(dirname, out_subdir, silent=False, only_widths=[]):
@@ -70,14 +70,7 @@ def process(dirname, out_subdir, silent=False, only_widths=[]):
             result = compress_image(data, terms=terms)
             compressed_data = result['compressed_data']
             imageio.imwrite(path_out, compressed_data)
-
-            if width < 200:
-                fontsize = int(width / 10)
-            else:
-                fontsize = int(width / 20)
-
-            compresion_x = round(1/ratio, 1)
-            annotate(path=path_out, terms=terms, compression=compresion_x, fontsize=fontsize)
+            # annotate_from_width(path=path_out, terms=terms, width=width, ratio=ratio)
 
     if not silent:
         print("Done")

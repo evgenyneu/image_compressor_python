@@ -1,10 +1,11 @@
 import imageio
 from svd import svd, singular_value_expansion
+from annotate import annotate_from_width
 import numpy as np
 import os
 
 
-def compress_image_to_file(path, terms, path_out=None):
+def compress_image_to_file(path, terms, annotate, path_out=None):
     """
     Compresses the image from `path` using singular value expansion.
     The image is saved to an output file which name is chosen automatically,
@@ -21,6 +22,10 @@ def compress_image_to_file(path, terms, path_out=None):
 
     terms : int
         The number of terms in the singular value expansion.
+
+    annotate : bool
+        If True, a text is added on top of the image,
+        describing compression level and the `terms` settings used.
 
     Returns
     -------
@@ -47,6 +52,10 @@ def compress_image_to_file(path, terms, path_out=None):
     ratio = compression_ratio(width=width, height=height, terms=terms)
     result['compression_ratio'] = round(1/ratio, 1)
     result['output_path'] = path_out
+
+    if annotate:
+        annotate_from_width(path=path_out, terms=terms, width=width, ratio=ratio)
+
     return result
 
 
