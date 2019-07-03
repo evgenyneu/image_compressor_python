@@ -49,7 +49,7 @@ def compress_image_to_file(path, terms, path_out=None):
 
 def compress_image(data, terms, iterations=None):
     """
-    Compresses the image from `path` using singular value expansion.
+    Compresses the image data using singular value expansion.
 
     Parameters
     ----------
