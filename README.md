@@ -13,7 +13,7 @@ pip install imageio
 
 ## Usage
 
-Run the command from a terminal, to compress an image file `image.jpg` using ten terms of the singular value expansion.
+Compress an image file `image.jpg` using ten terms of the singular value expansion:
 
 ```
 python src/compress.py image.jpg --terms=10
