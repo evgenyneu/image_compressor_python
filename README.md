@@ -20,7 +20,7 @@ cd image_compressor_python
 
 ## Usage
 
-Compress an image file `image.jpg` using ten terms of the singular value expansion:
+Compress an image file [marmite.jpg](marmite.jpg) using ten terms of the singular value expansion:
 
 ```
 python src/compress.py marmite.jpg --terms=10
