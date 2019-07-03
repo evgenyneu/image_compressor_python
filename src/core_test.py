@@ -42,20 +42,36 @@ class TestCompressImage:
         assert result['iterations'] == 7
 
 
-def test_compressed_image_path():
-    path = "/dir/images/marmite_750x375.jpg"
-    result = compressed_image_path(path, width=750, height=150, terms=8)
+class TestCompressImagePath:
+    def test_compressed_image_path(self):
+        path = "/dir/images/marmite_750x375.jpg"
+        result = compressed_image_path(path, width=750, height=150, terms=8)
 
-    assert result == "/dir/images/marmite_750x375_8_terms_15.6x_compression.jpg"
+        assert result == "/dir/images/marmite_750x375_8_terms_15.6x_compression.jpg"
+
+    def test_compressed_image_path_filename_without_dir(self):
+        path = "marmite_750x375.jpg"
+        result = compressed_image_path(path, width=750, height=150, terms=8)
+
+        assert result == "marmite_750x375_8_terms_15.6x_compression.jpg"
 
 
-def test_dir_filename_extension():
-    path = "/dir/dir2/my.cat.jpg"
-    dirname, filename_without_extension, file_extension = dir_filename_extension(path)
+class TestDirFilenameExtension:
+    def test_dir_filename_extension(self):
+        path = "/dir/dir2/my.cat.jpg"
+        dirname, filename_without_extension, file_extension = dir_filename_extension(path)
 
-    assert dirname == "/dir/dir2"
-    assert filename_without_extension == "my.cat"
-    assert file_extension == ".jpg"
+        assert dirname == "/dir/dir2"
+        assert filename_without_extension == "my.cat"
+        assert file_extension == ".jpg"
+
+    def test_dir_filename_extension_filename_without_dir(self):
+        path = "my.cat.jpg"
+        dirname, filename_without_extension, file_extension = dir_filename_extension(path)
+
+        assert dirname == ""
+        assert filename_without_extension == "my.cat"
+        assert file_extension == ".jpg"
 
 
 def test_compression_ratio():

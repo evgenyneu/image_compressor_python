@@ -165,7 +165,10 @@ def compressed_image_path(path, width, height, terms, outdir=None):
     if outdir is None:
         outdir = dirname
 
-    return f"{outdir}/{filename_without_extension}_{terms_text}_{compression}{file_extension}"
+    if outdir is not None and len(outdir) > 0:
+        outdir = outdir + '/'
+
+    return f"{outdir}{filename_without_extension}_{terms_text}_{compression}{file_extension}"
 
 
 def dir_filename_extension(path):
