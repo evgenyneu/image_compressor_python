@@ -28,8 +28,6 @@ class TestSVD:
         assert len(result) == 2
 
         assert_allclose(result[0][0], [[0.7071067812541463], [-0.7071067811189488]])
-
-        assert_allclose(result[0][0], [[0.7071067812541463], [-0.7071067811189488]])
         assert result[0][1] == approx(3)
         assert_allclose(result[0][2], [[0.7071067813893437], [-0.7071067809837513]])
 

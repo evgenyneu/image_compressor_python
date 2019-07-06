@@ -42,7 +42,7 @@ def svd(matrix, max_eigenvalues, iterations):
         A matrix.
 
     max_eigenvalues : int
-        Maximum number of eigenvalues to calculate.
+        Maximum number of non-zero eigenvalues to calculate.
 
     iterations : int
         The number of iterations of the power method.
