@@ -265,6 +265,13 @@ def load_image(path):
         Array containing image data.
     """
 
-    return np.array(imageio.imread(path))
+    array = np.array(imageio.imread(path))
+
+    if len(array.shape) == 3 and array.shape[2] == 4:
+        # Image data contains four chanels
+        # Delete the alpha chanel
+        array = np.delete(array, 3, axis=2)
+
+    return array
 
 

@@ -120,7 +120,7 @@ def test_load_image():
 
 def test_load_image_four_chanels():
     result = load_image('images/test_3x3.bmp')
-    assert result.shape == (3, 3, 4)
+    assert result.shape == (3, 3, 3)
 
     red = result[:, :, 0]
     assert red[0][0] == 80
