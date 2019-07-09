@@ -116,3 +116,47 @@ def test_load_image():
     assert result[2][0] == 254
     assert result[2][1] == 219
     assert result[2][2] == 199
+
+
+def test_load_image_four_chanels():
+    result = load_image('images/test_3x3.bmp')
+    assert result.shape == (3, 3, 4)
+
+    red = result[:, :, 0]
+    assert red[0][0] == 80
+    assert red[0][1] == 60
+    assert red[0][2] == 0
+
+    assert red[1][0] == 150
+    assert red[1][1] == 120
+    assert red[1][2] == 100
+
+    assert red[2][0] == 255
+    assert red[2][1] == 220
+    assert red[2][2] == 200
+
+    green = result[:, :, 1]
+    assert green[0][0] == 85
+    assert green[0][1] == 65
+    assert green[0][2] == 5
+
+    assert green[1][0] == 155
+    assert green[1][1] == 125
+    assert green[1][2] == 105
+
+    assert green[2][0] == 255
+    assert green[2][1] == 225
+    assert green[2][2] == 205
+
+    blue = result[:, :, 2]
+    assert blue[0][0] == 90
+    assert blue[0][1] == 70
+    assert blue[0][2] == 10
+
+    assert blue[1][0] == 160
+    assert blue[1][1] == 130
+    assert blue[1][2] == 110
+
+    assert blue[2][0] == 255
+    assert blue[2][1] == 230
+    assert blue[2][2] == 210
