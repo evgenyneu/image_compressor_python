@@ -1,7 +1,8 @@
 from core import load_image, compress_image, iterations_for_terms, compression_ratio, \
-    dir_filename_extension, compress_image_to_file, compressed_image_path
+    dir_filename_extension, compress_image_to_file, compressed_image_path, float_array
 
 import os
+import numpy as np
 from pytest import approx
 
 
@@ -172,3 +173,19 @@ def test_load_image_four_chanels():
     assert blue[2][0] == 255
     assert blue[2][1] == 230
     assert blue[2][2] == 210
+
+
+class TestFloatArray:
+    def test_float_array_from_numpy_uint8_array(self):
+        array = np.array([[1, 2], [3, 4]], dtype=np.uint8)
+        result = float_array(array)
+
+        assert type(result) == np.ndarray
+        assert result.dtype == np.float64
+
+    def test_float_array_from_python_array(self):
+        array = [[1, 2], [3, 4]]
+        result = float_array(array)
+
+        assert type(result) == np.ndarray
+        assert result.dtype == np.float64

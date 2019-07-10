@@ -1,4 +1,5 @@
 from linear_algebra import matrix_size, dot_product, gramian
+import numpy as np
 
 
 class TestGramian:
@@ -10,11 +11,9 @@ class TestGramian:
         assert result.tolist() == [[18, -12], [-12, 8]]
 
     def test_gramian_3_by_3(self):
-        matrix = [[80, 60, 0], [150, 120, 100], [255, 220, 200]]
-
+        matrix = np.array([[80, 60, 0], [150, 120, 100], [255, 220, 200]])
+        
         result = gramian(matrix)
-
-        print(result)
 
         assert result.tolist() == [
             [93925, 78900, 66000],

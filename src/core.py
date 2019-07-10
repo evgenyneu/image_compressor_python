@@ -95,6 +95,9 @@ def compress_image(data, terms, iterations=None):
     if iterations is None:
         iterations = iterations_for_terms(terms)
 
+    # Ensure array elements are floats, and not uint8
+    data = float_array(data)
+
     if data.ndim == 2:  # Black and white image
         data = np.expand_dims(data, axis=2)
 
@@ -275,3 +278,19 @@ def load_image(path):
     return array
 
 
+def float_array(array):
+    """
+    Converts an array to float64 type.
+
+    Parameters
+    ----------
+    array : list or numpy.ndarray
+        An input array
+
+    Returns
+    -------
+    numpy.ndarray
+        Array with elements represented as float64 numbers.
+    """
+
+    return np.array(array, dtype=np.float64)
