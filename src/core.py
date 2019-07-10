@@ -116,8 +116,8 @@ def compress_image(data, terms, iterations=None):
 
         compressed_data = singular_value_expansion(svd_data)
 
-        # Convert data values to integers in range between 0 and 254 (brightness)
-        compressed_data = np.clip(compressed_data, 0, 254)
+        # Convert data values to integers in range between 0 and 255 (brightness)
+        compressed_data = np.clip(compressed_data, 0, 255)
         compressed_data = compressed_data.astype(np.uint8)
         compressed_data = np.expand_dims(compressed_data, axis=2)
         compressed = np.append(compressed, compressed_data, axis=2)

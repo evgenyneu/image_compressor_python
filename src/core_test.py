@@ -35,6 +35,62 @@ class TestCompressImageToFile:
         output_path = result['output_path']
         assert output_path == path_out
         assert os.path.exists(output_path)
+
+        # Verify image pixels
+        # ------------------
+
+        result = load_image(path_out)
+        assert result.shape == (3, 3, 3)
+
+        # Red
+        # ------
+
+        data = result[:, :, 0]
+        assert data[0][0] == 59
+        assert data[0][1] == 49
+        assert data[0][2] == 41
+
+        assert data[1][0] == 145
+        assert data[1][1] == 122
+        assert data[1][2] == 102
+
+        assert data[2][0] == 255
+        assert data[2][1] == 221
+        assert data[2][2] == 185
+
+        # Green
+        # ------
+
+        data = result[:, :, 1]
+        assert data[0][0] == 64
+        assert data[0][1] == 54
+        assert data[0][2] == 46
+
+        assert data[1][0] == 150
+        assert data[1][1] == 128
+        assert data[1][2] == 107
+
+        assert data[2][0] == 255
+        assert data[2][1] == 226
+        assert data[2][2] == 189
+
+        # Blue
+        # ------
+
+        data = result[:, :, 2]
+        assert data[0][0] == 69
+        assert data[0][1] == 60
+        assert data[0][2] == 50
+
+        assert data[1][0] == 154
+        assert data[1][1] == 134
+        assert data[1][2] == 112
+
+        assert data[2][0] == 255
+        assert data[2][1] == 230
+        assert data[2][2] == 194
+
+        # Delete output image
         os.remove(output_path)
 
 
