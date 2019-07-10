@@ -24,6 +24,15 @@ class TestCompressImageToFile:
         assert result['compression_ratio'] == 5
         os.remove(output_path)
 
+    def test_compress_image_to_file_3_by_3(self):
+        path = "images/test_3x3.bmp"
+        path_out = "images/test_3x3_output.bmp"
+        result = compress_image_to_file(path, path_out=path_out, terms=1, iterations=1, annotate=False)
+        output_path = result['output_path']
+        assert output_path == path_out
+        assert os.path.exists(output_path)
+        os.remove(output_path)
+
 
 class TestCompressImage:
     def test_compress_image(self):
