@@ -9,6 +9,18 @@ class TestGramian:
 
         assert result.tolist() == [[18, -12], [-12, 8]]
 
+    def test_gramian_3_by_3(self):
+        matrix = [[80, 60, 0], [150, 120, 100], [255, 220, 200]]
+
+        result = gramian(matrix)
+
+        print(result)
+
+        assert result.tolist() == [
+            [93925, 78900, 66000],
+            [78900, 66400, 56000],
+            [66000, 56000, 50000]]
+
 
 class TestDotProduct:
     def test_dot_product(self):
