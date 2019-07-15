@@ -18,7 +18,7 @@ def gramian(matrix):
         The Gramian of `matrix`.
     """
 
-    return np.transpose(matrix) @ matrix
+    return np.transpose(matrix).dot(matrix)
 
 
 def dot_product(vector1, vector2):
